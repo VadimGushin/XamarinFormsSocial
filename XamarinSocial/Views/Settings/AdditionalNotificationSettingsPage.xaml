@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.Settings;assembly=XamarinSocial"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:customControls="clr-namespace:XamarinSocial.CustomElements"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.Settings.AdditionalNotificationSettingsPage"
+                           xmlns:localization="clr-namespace:XamarinSocial.Resources.Strings"
+                           x:TypeArguments="viewModels:AdditionalNotificationSettingsViewModel"
+                           HasNativeNavBar="False"
+                           Title="AdditionalNotificationSettings">
+
+    <ContentPage.Content>
+
+        <StackLayout Margin="0,15">
+
+            <customControls:CustomNavigationBar BackgroundViewColor="Transparent"
+                                                LeftImage="img_backArrow.png"
+                                                LeftButtonClickCommand="{mvx:MvxBind BackCommand}"
+                                                mvx:Bi.nd="Title DataModel.Title"/>
+
+            <ScrollView>
+
+                <StackLayout Orientation="Vertical">
+
+                    <BoxView BackgroundColor="Transparent"
+                             HeightRequest="20"/>
+
+                    <Label Style="{StaticResource settings_i1}"
+                           Text="{x:Static localization:Strings.ShowNotifications}"/>
+
+                    <StackLayout BindableLayout.ItemsSource="{Binding Items}"
+                                 Orientation="Vertical"
+                                 Margin="10,15">
+
+                        <BindableLayout.ItemTemplate>
+
+                            <DataTemplate>
+                                
+                                <StackLayout Orientation="Horizontal">
+                                    
+                                    <RadioButton Style="{StaticResource radioButtonStyle_i1}"
+                                                 GroupName="SettingsRadioButtons"
+                                                 mvx:Bi.nd="IsChecked IsSelected"/>
+                                    
+                                    <Label Style="{StaticResource labelForRadiobutton}" 
+                                           mvx:Bi.nd="Text Value"/>
+                                    
+                                </StackLayout>
+                                
+
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="15,7">
+
+                        <Label Text="Push Notifications"
+                               HorizontalOptions="StartAndExpand"/>
+
+                        <Switch HorizontalOptions="End"
+                                mvx:Bi.nd="IsToggled DataModel.IsNotificationTurned"/>
+
+                    </StackLayout>
+
+
+                </StackLayout>
+                
+                
+            </ScrollView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage>

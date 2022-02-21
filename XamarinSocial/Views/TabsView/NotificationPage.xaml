@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                          xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+                          x:TypeArguments="viewModels:NotificationViewModel"
+                          x:Class="XamarinSocial.Views.TabsView.NotificationPage"
+                          xmlns:customTabControls="clr-namespace:XamarinSocial.CustomElements.Tabs"
+                          xmlns:notificationControls="clr-namespace:XamarinSocial.CustomElements.Notification"
+                          xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                          HasNativeNavBar="False"
+                          x:Name="Notification"
+                          IconImageSource="img_notificationIcon.png"
+                          Title="Notifs">
+
+    <ContentPage.Content>
+
+        <RelativeLayout>
+
+            <customTabControls:CustomThreeTabsView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0, Constant=15}"
+                                                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=20}"
+                                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-30}"
+                                                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=50}"
+                                                   HorizontalOptions="Fill"
+                                                   IsBadgesVisible="True"
+                                                   mvx:Bi.nd="ClickTabCommand CustomTabClickedCommand;
+                                                              FirstTabText [Likes];
+                                                              SecondTabText [Views];
+                                                              ThirdTabText [More]; 
+                                                              FirstBadgeText FirstBadgeValue;
+                                                              SecondBadgeText SecondBadgeValue;
+                                                              ThirdBadgeText ThirdBadgeValue" />
+
+            <RefreshView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0, Constant=15}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=80}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-30}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-85}"
+                         IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding RefreshCommand}">
+
+                <ScrollView Scrolled="OnItemsCollectionScrolled">
+
+                    <StackLayout BindableLayout.ItemsSource="{Binding Items}"
+                                 Orientation="Vertical"
+                                 VerticalOptions="StartAndExpand">
+
+                        <BindableLayout.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <notificationControls:NotificationControl NotifyType="Likes"
+                                                                          mvx:Bi.nd="IdValue Id;
+                                                                                     NotifyActionType ActionType;
+                                                                                     LeftTopText UserName;
+                                                                                     MessageText Message;
+                                                                                     Date CreationDate;
+                                                                                     ImageSource ImageSource">
+
+                                    <notificationControls:NotificationControl.GestureRecognizers>
+
+                                        <TapGestureRecognizer Tapped="OnCollectionItemTapped"
+                                                              CommandParameter="{Binding Id}"/>
+
+                                    </notificationControls:NotificationControl.GestureRecognizers>
+
+                                </notificationControls:NotificationControl>
+
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </RefreshView>
+
+        </RelativeLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage >

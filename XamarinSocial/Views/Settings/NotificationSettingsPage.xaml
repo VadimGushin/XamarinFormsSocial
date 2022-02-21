@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.Settings;assembly=XamarinSocial"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:settingsControls="clr-namespace:XamarinSocial.CustomElements.Settings"
+                           xmlns:customControls="clr-namespace:XamarinSocial.CustomElements"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.Settings.NotificationSettingsPage"
+                           xmlns:localization="clr-namespace:XamarinSocial.Resources.Strings"
+                           x:TypeArguments="viewModels:NotificationSettingsViewModel"
+                           HasNativeNavBar="False"
+                           Title="PushNotifications">
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                     Spacing="10"
+                     Padding="0,20">
+
+            <customControls:CustomNavigationBar BackgroundViewColor="Transparent"
+                                                LeftImage="img_backArrow.png"
+                                                LeftButtonClickCommand="{mvx:MvxBind BackCommand}"
+                                                mvx:Bi.nd="Title [EditProfile]"/>
+
+            <ScrollView>
+
+                <StackLayout Orientation="Vertical">
+
+                    <BoxView BackgroundColor="Transparent"
+                             HeightRequest="{StaticResource fsize_i20}"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.PrivateMessages}"
+                                                   TapCommand="{mvx:MvxBind ItemClickCommand}"
+                                                   ImageSource="img_privateMessage.svg"
+                                                   mvx:Bi.nd="BottomText NotificationSettingsData.PrivateMessageString"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.Likes}"
+                                                   TapCommand="{mvx:MvxBind ItemClickCommand}"
+                                                   ImageSource="img_likes.svg"
+                                                   mvx:Bi.nd="BottomText NotificationSettingsData.LikeString"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.Comments_Settings_}"
+                                                   TapCommand="{mvx:MvxBind ItemClickCommand}"
+                                                   ImageSource="img_comments.svg"
+                                                   mvx:Bi.nd="BottomText NotificationSettingsData.CommentString"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.InterestingPosts}"
+                                                   TapCommand="{mvx:MvxBind ItemClickCommand}"
+                                                   ImageSource="img_interestingPost.svg"
+                                                   mvx:Bi.nd="BottomText NotificationSettingsData.InterestingPostString"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.FriendsRequests}"
+                                                   TapCommand="{mvx:MvxBind ItemClickCommand}"
+                                                   ImageSource="img_friendRequest.svg"
+                                                   mvx:Bi.nd="BottomText NotificationSettingsData.FriendRequestString"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.PhotoTags}"
+                                                   TapCommand="{mvx:MvxBind ItemClickCommand}"
+                                                   ImageSource="img_photoTag.svg"
+                                                   mvx:Bi.nd="BottomText NotificationSettingsData.PhotoTagString"/>
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage>

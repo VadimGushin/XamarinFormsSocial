@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell  xmlns="http://xamarin.com/schemas/2014/forms" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           x:Class="XamarinSocial.CustomElements.Chat.Cells.IncomingViewCell">
+
+    <StackLayout Orientation="Vertical">
+
+        <Label Style="{StaticResource chatConversationLabelStyle_i1}"
+               Text="{Binding TopDateString}"
+               IsVisible="{Binding HasTopDate}"/>
+
+        <StackLayout Orientation="Horizontal"
+                     Padding="0,7">
+
+            <BoxView BackgroundColor="Transparent"
+                 WidthRequest="40"/>
+
+            <Frame BackgroundColor="White"
+                   HorizontalOptions="EndAndExpand"
+                   HasShadow="False"
+                   CornerRadius="10"
+                   Padding="15"
+                   Margin="0">
+
+                <StackLayout Orientation="Vertical">
+
+                    <StackLayout Orientation="Horizontal">
+
+                        <Label Style="{StaticResource chatConversationLabelStyle_i2}"
+                               TextColor="{StaticResource fcolor_b6}"
+                               Text="{Binding ShortDateString}"/>
+
+                        <Label Style="{StaticResource chatConversationLabelStyle_i3}"
+                               TextColor="{StaticResource fcolor_b1}"
+                               Text="{Binding Message}">
+
+                            <Label.HorizontalTextAlignment>
+                                <OnPlatform x:TypeArguments="TextAlignment" iOS="End"/>
+                            </Label.HorizontalTextAlignment>
+
+                        </Label>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+            </Frame>
+
+        </StackLayout>
+
+    </StackLayout>
+
+</ViewCell>

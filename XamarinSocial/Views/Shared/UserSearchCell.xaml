@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Shared.UserSearchCell"
+             xmlns:converters="clr-namespace:XamarinSocial.Converters"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             xmlns:effects="clr-namespace:XamarinSocial.Effects"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+  <ContentView.Content>
+
+        <Frame BackgroundColor="White"
+               CornerRadius="8"
+               Padding="0"
+               Margin="0">
+            <Frame.Effects>
+                <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+            </Frame.Effects>
+            <RelativeLayout >
+                <Frame Style="{StaticResource frameStyle_i3}"
+                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                       RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.7}">
+                    <Frame.Effects>
+                        <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                    </Frame.Effects>
+
+                    <ffimageloading:CachedImage 
+                                                Aspect="AspectFill"
+                                                DownsampleToViewSize="True"
+                                                HorizontalOptions="Fill"
+                                                WidthRequest="200"
+                                                HeightRequest="300"
+                                                Source="{Binding ImgURL}">
+                    </ffimageloading:CachedImage>
+                   
+                </Frame>
+
+                <StackLayout Orientation="Horizontal"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+                             RelativeLayout.XConstraint="10"
+                             RelativeLayout.YConstraint="10">
+                    <Frame BackgroundColor="{StaticResource tcolor_b2}"
+                           Style="{StaticResource searchUserBadge}" 
+                           IsVisible="False">
+                        <Label mvx:Bi.nd="Text FirstBadgeText"  
+                               Style="{StaticResource searchUserItemCustomBadge}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span mvx:Bi.nd="Text [New]"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding LastVisitAgoInHours}"/>
+                                    <Span mvx:Bi.nd="Text [HAgo]"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame.Triggers>
+                            <DataTrigger TargetType="Frame"  Binding="{Binding IsNew}" Value="True">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Frame.Triggers>
+                        
+                    </Frame>
+                    <Frame BackgroundColor="{StaticResource user_search_badge_bg}"
+                           Style="{StaticResource searchUserBadge}" 
+                           IsVisible="False">
+                        <Label mvx:Bi.nd="Text [Popular]"  
+                               Style="{StaticResource searchUserItemCustomBadge}"/>
+                        <Frame.Triggers>
+                            <DataTrigger TargetType="Frame"  Binding="{Binding IsPopular}" Value="True">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Frame.Triggers>
+                    </Frame>
+                    
+                    <Frame Style="{StaticResource searchUserBadge}" 
+                           BackgroundColor="{StaticResource user_search_badge_pink_bg}">
+                        <Label mvx:Bi.nd="Text ThirdBadgeText"
+                              Style="{StaticResource searchUserItemCustomBadge}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span mvx:Bi.nd="Text [Match] "/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding MatchPercent}"/>
+                                    <Span Text="%"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Frame>
+                </StackLayout>
+                <Label  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.7}"
+                        Style="{StaticResource welcomStyle_i10}"
+                        Margin="15,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding FirstName}" FontAttributes="Bold" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Age}"  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                        Text="{Binding City}"
+                        Style="{StaticResource user_search_city}"
+                        Margin="15,0"/>
+                <ImageButton 
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.63}"
+                             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.85}"
+                             HeightRequest="60"
+                             WidthRequest="60"
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SearchUsersViewModel}}, Path=LikeUserCommandAsync}"
+                             CommandParameter="{Binding .}"
+                             BackgroundColor="Transparent">
+                    <ImageButton.Triggers>
+                        <DataTrigger TargetType="ImageButton"  Binding="{Binding IsLiked}" Value="True">
+                            <Setter Property="Source" Value="search_user_liked.png"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="ImageButton"  Binding="{Binding IsLiked}" Value="False">
+                            <Setter Property="Source" Value="search_user_without_like.png"/>
+                        </DataTrigger>
+                    </ImageButton.Triggers>
+                    
+                </ImageButton>
+            </RelativeLayout>
+            
+        </Frame>
+    </ContentView.Content>
+</ContentView>

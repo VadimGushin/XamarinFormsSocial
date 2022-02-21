@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                          xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+                          xmlns:customControls="clr-namespace:XamarinSocial.CustomElements"
+                          xmlns:chatControls="clr-namespace:XamarinSocial.CustomElements.Chat"
+                          x:TypeArguments="viewModels:ChatViewModel"
+                          x:Class="XamarinSocial.Views.TabsView.ChatPage"
+                          xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                          xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                          xmlns:converters="clr-namespace:XamarinSocial.Converters"
+                          HasNativeNavBar="False"
+                          IconImageSource="img_chatIcon.png"
+                          x:Name="Chats"
+                          Title="Chat">
+
+    <!--<baseView:BaseContentPage.IconImageSource>
+
+        <FileImageSource File="{Binding ImageSource}"/>
+        
+    </baseView:BaseContentPage.IconImageSource>-->
+
+    <baseView:BaseContentPage.Resources>
+        
+        <ResourceDictionary>
+            
+            <converters:BoolToBoolConverslyConverter x:Key="BoolToBoolConverslyConverter"/>
+            
+        </ResourceDictionary>
+        
+    </baseView:BaseContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <RelativeLayout>
+
+            <customControls:CustomNavigationBar RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=5}"
+                                                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-10}"
+                                                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=70}"
+                                                BackgroundViewColor="Transparent"
+                                                LeftImage="img_hamburgerMenu.png"
+                                                RightImage="img_search.png"
+                                                LeftButtonClickCommand="{mvx:MvxBind OpenMenuCommand}"
+                                                RightButtonClickCommand="{mvx:MvxBind SearchCommand}"
+                                                mvx:Bi.nd="Title [Chat]"/>
+
+            <StackLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=70}"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=15}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-30}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-70}"
+                         mvx:Bi.nd="IsVisible IsChatsVisible">
+
+                <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                             Command="{Binding RefreshCommand}">
+
+                    <ScrollView Scrolled="OnItemsCollectionScrolled">
+
+                        <StackLayout BindableLayout.ItemsSource="{Binding Items}"
+                                     Orientation="Vertical"
+                                     Spacing="10"
+                                     VerticalOptions="StartAndExpand">
+
+                            <BindableLayout.ItemTemplate>
+
+                                <DataTemplate>
+
+                                    <chatControls:ChatItemControl mvx:Bi.nd="ImageSource ImageSource;
+                                                                             IsOnline IsOnline;
+                                                                             UserName UserName;
+                                                                             MessageText Message;
+                                                                             Date CreationDate;
+                                                                             BadgeCount Count;
+                                                                             IdValue Id">
+
+                                        <chatControls:ChatItemControl.GestureRecognizers>
+
+                                            <TapGestureRecognizer Tapped="OnCollectionItemTapped"
+                                                                  CommandParameter="{Binding Id}"/>
+
+                                        </chatControls:ChatItemControl.GestureRecognizers>
+
+                                    </chatControls:ChatItemControl>
+
+                                </DataTemplate>
+
+                            </BindableLayout.ItemTemplate>
+
+                        </StackLayout>
+
+                    </ScrollView>
+
+                </RefreshView>
+
+            </StackLayout>
+
+            <RelativeLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=70}"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-70}"
+                            IsVisible="{Binding IsChatsVisible, Converter={StaticResource BoolToBoolConverslyConverter}}">
+
+                <ffimageloadingsvg:SvgCachedImage RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.1}"
+                                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.25}"
+                                                  DownsampleToViewSize="True"
+                                                  Aspect="AspectFit"
+                                                  HorizontalOptions="Center"
+                                                  Source="img_chatEmpty.svg"/>
+
+                <Label RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.1}"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.38}"
+                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.8}"
+                       RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.12}"
+                       VerticalOptions="Center"
+                       Style="{StaticResource welcomStyle_i17}"
+                       mvx:Bi.nd="Text [NoMessages]"/>
+
+                <Label RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.1}"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.5}"
+                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.8}"
+                       RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.12}"
+                       MaxLines="2"
+                       Style="{StaticResource welcomStyle_i18}"
+                       VerticalOptions="Center"
+                       mvx:Bi.nd="Text [EmptyChatsMessage]"/>
+
+                <Button RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.1}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.62}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.8}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.1}"
+                        VerticalOptions="Center"
+                        Style="{StaticResource ButtonStyle_i3}"
+                        Command="{mvx:MvxBind InviteFriendsCommand}"
+                        mvx:Bi.nd="Text [InviteFriends]"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage>

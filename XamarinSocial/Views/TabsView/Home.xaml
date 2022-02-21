@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+                           x:Class="XamarinSocial.Views.TabsView.Home"
+                           x:TypeArguments="viewModels:HomeViewModel"
+                           xmlns:tabsViews="clr-namespace:XamarinSocial.Views.TabsView"
+                           xmlns:cells="clr-namespace:XamarinSocial.Views.Cells"
+                             HasNativeNavBar="False"
+                           xmlns:controlsVideoPlayer="clr-namespace:XamarinSocial.CustomElements.VideoPlayer"
+                           xmlns:converters="clr-namespace:XamarinSocial.Converters"
+                           xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                           xmlns:models="clr-namespace:XamarinSocial.Models.Api.Responses">
+    <baseView:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="imagePostTemplate">
+                <cells:PostFeedCell/>
+            </DataTemplate>
+            <converters:BoolToBoolConverslyConverter x:Key="BoolToBoolConverslyConverter"/>
+        </ResourceDictionary>
+
+    </baseView:BaseContentPage.Resources>
+
+    <baseView:BaseContentPage.IconImageSource>
+        <FileImageSource File="hearts.png"/>
+    </baseView:BaseContentPage.IconImageSource>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+
+            <!--Empty feed view-->
+            <tabsViews:EmptyFeedView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="SizeProportional"
+                IsVisible="{Binding IsFeedEmpty}"/>
+
+            <!--Feed list-->
+
+            <!--<controlsVideoPlayer:VideoPlayer Source="https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4" />-->
+
+            <ScrollView Scrolled="OnCollectionScrolled" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >
+
+                <StackLayout BindableLayout.ItemsSource="{Binding Posts}"
+                             Orientation="Vertical"
+                             Spacing="10"
+                             BackgroundColor="{StaticResource user_search_bg_color}"
+                             VerticalOptions="StartAndExpand">
+
+                    <BindableLayout.ItemTemplate>
+
+                        <DataTemplate x:DataType="{x:Type models:Post}">
+                            <cells:PostFeedCell/>
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+                </StackLayout>
+
+            </ScrollView>
+
+            <!--Add post-->
+            <ffimageloadingsvg:SvgCachedImage
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFit"
+                            AbsoluteLayout.LayoutBounds="0.98,1,0.22,AutoSize"
+                            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                <ffimageloadingsvg:SvgCachedImage.Source>
+                    <OnPlatform x:TypeArguments="ImageSource"
+                                iOS="add.png" 
+                                Android="add.png">
+                    </OnPlatform>
+                </ffimageloadingsvg:SvgCachedImage.Source>
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToCreatePostCommandAsync}"/>
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+            </ffimageloadingsvg:SvgCachedImage>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

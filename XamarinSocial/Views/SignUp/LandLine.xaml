@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.SignUp;assembly=XamarinSocial"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+             x:Class="XamarinSocial.Views.SignUp.LandLine"
+             x:TypeArguments="viewModels:LandLineViewModel"
+             HasNativeNavBar="False"      
+             Title="LandLine">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.02*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.02*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="1" Grid.Row="1"
+                    Style="{StaticResource welcomStyle_i8}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Label.GestureRecognizers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="&#xf053; "
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="FontAwesome5Solid">
+                            </Span>
+                            <Span mvx:Bi.nd="Text [Back]" 
+                                Style="{StaticResource welcomStyle_i12}"
+                                FontFamily="SFProDisplayRegular">
+                            </Span>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label  Grid.Column="1" Grid.Row="2" 
+                    mvx:Bi.nd="Text [LandLine]"
+                    Style="{StaticResource welcomStyle_i9}"/>
+            <BoxView  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"
+                    Style="{StaticResource BoxViewStyle_i1}"/>
+            <Label  Grid.Column="1" Grid.Row="5" 
+                    Style="{StaticResource welcomStyle_i13}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span mvx:Bi.nd="Text [WaitForTheCallForConfirmation]"/>
+                        <Span Text="{x:Static x:Environment.NewLine}" />
+                        <Span mvx:Bi.nd="Text PhoneNumber"/>
+                        <Span Text="{x:Static x:Environment.NewLine}" />
+                        <Span mvx:Bi.nd="Text [Soon]"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Image Grid.Column="1" Grid.Row="6"
+                   Source="landline_img.png"/>
+        </Grid>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

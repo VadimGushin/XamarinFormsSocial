@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.CustomElements.Settings.SettingsButton"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+
+    <ContentView.Content>
+
+        <StackLayout x:Name="mainLayout"
+                     HeightRequest="50"
+                     Orientation="Horizontal"
+                     Padding="15,5">
+
+            <ffimageloadingsvg:SvgCachedImage x:Name="imageView"
+                                              DownsampleToViewSize="True"
+                                              Aspect="AspectFit"
+                                              HorizontalOptions="End"/>
+
+            <BoxView BackgroundColor="Transparent"
+                     WidthRequest="10"/>
+
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="Center">
+
+                <Label x:Name="topText"
+                       TextColor="{StaticResource fcolor_b1}"
+                       FontSize="{StaticResource fsize_i15}"
+                       FontFamily="SFProTextMedium"/>
+
+                <Label x:Name="bottomText"
+                       TextColor="{StaticResource fcolor_b6}"
+                       FontSize="{StaticResource fsize_i13}"
+                       FontFamily="SFProTextRegular"/>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentView.Content>
+
+</ContentView>

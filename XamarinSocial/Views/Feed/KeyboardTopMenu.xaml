@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Feed.KeyboardTopMenu"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+    <ContentView.Content>
+        <RelativeLayout Padding="0"
+                        Margin="0"
+                        HorizontalOptions="Fill">
+
+            <ScrollView Orientation="Horizontal"
+                  Padding="0"
+                  Margin="0"
+                  HorizontalScrollBarVisibility="Never"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}">
+
+                <StackLayout Style="{StaticResource stackLayoutStyle_1}" 
+                             Orientation="Horizontal">
+
+                    <RelativeLayout Margin="0" 
+                                Padding="0"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Start">
+                        <Frame  Style="{StaticResource frameStyle_i3_base}"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AddContentTapGestureRecognizer_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <ffimageloadingsvg:SvgCachedImage
+                                                    DownsampleToViewSize="True" 
+                                                    Margin="0" 
+                                                    Aspect="AspectFit"
+                                                    Source="image.svg"/>
+                        </Frame>
+                    </RelativeLayout>
+                    <RelativeLayout Margin="0" 
+                                Padding="0"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Start">
+                        <Frame  Style="{StaticResource frameStyle_i3_base}"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                        </Frame>
+                    </RelativeLayout>
+
+                    <RelativeLayout Margin="0" 
+                                Padding="0"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Start">
+                        <Frame  Style="{StaticResource frameStyle_i3_base}"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GetCurrentLocationCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                            <ffimageloadingsvg:SvgCachedImage
+                                                    DownsampleToViewSize="True" 
+                                                    Margin="0" 
+                                                    Aspect="AspectFit"
+                                                    Source="map_pin.svg"/>
+                        </Frame>
+                    </RelativeLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

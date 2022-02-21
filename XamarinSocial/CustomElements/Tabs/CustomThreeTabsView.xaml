@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:sharedControls="clr-namespace:XamarinSocial.CustomElements.Shared"
+             x:Class="XamarinSocial.CustomElements.Tabs.CustomThreeTabsView"
+             x:Name="ThreeTabsView">
+
+    <ContentView.Resources>
+        <Style TargetType="sharedControls:BadgeControl">
+            <Setter Property="IsVisible"         Value="False"/>
+            <Setter Property="IsRounded"         Value="True"/>
+            <Setter Property="Opacity"           Value="0.5"/>
+            <Setter Property="VerticalOptions"   Value="Start"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+        </Style>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+
+        <Grid RowSpacing="0" 
+              ColumnSpacing="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="firstTab"
+                            Grid.Row="0"  
+                            Style="{StaticResource CustomThreeTabsButton}"
+                            Clicked="FirstTabClicked">
+
+                        <Button.Triggers>
+
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}"
+                                         Value="FirstTabSelected">
+                                
+                                <Setter Property="TextColor"
+                                        Value="{StaticResource fcolor_b3}" />
+                                
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                                
+                            </DataTrigger>
+
+                        </Button.Triggers>
+                        
+                    </Button>
+
+                    <sharedControls:BadgeControl Grid.Row="0"  
+                                                 x:Name="firstBadge"
+                                                 Opacity="0.5">
+
+                        <sharedControls:BadgeControl.Triggers>
+
+                            <DataTrigger TargetType="sharedControls:BadgeControl"
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}"
+                                         Value="FirstTabSelected">
+
+                                <Setter Property="Opacity"
+                                        Value="1" />
+
+                            </DataTrigger>
+
+                        </sharedControls:BadgeControl.Triggers>
+                        
+                    </sharedControls:BadgeControl>
+
+                    <BoxView Grid.Row="1"
+                             Margin="0"                     
+                             Color="{StaticResource fcolor_custom_tab_line}"
+                             Style="{StaticResource BoxViewStyleCustomTabs}">
+                        
+                        <BoxView.Triggers>
+                            
+                            <DataTrigger TargetType="BoxView" 
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}" 
+                                         Value="FirstTabSelected">
+                                
+                                <Setter Property="Color"
+                                        Value="#0084F4" />
+                                
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                                
+                            </DataTrigger>
+                            
+                        </BoxView.Triggers>
+                        
+                    </BoxView>
+                    
+                </Grid>
+                
+            </Grid>
+            
+            <Grid Grid.Column="1">
+                
+                <Grid>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Button x:Name="secondTab"
+                            Grid.Row="0"  
+                            Style="{StaticResource CustomThreeTabsButton}"
+                            Clicked ="SecondTabClicked">
+                        
+                        <Button.Triggers>
+                            
+                            <DataTrigger TargetType="Button" 
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}"
+                                         Value="SecondTabSelected">
+                                
+                                <Setter Property="TextColor"
+                                        Value="{StaticResource fcolor_b3}" />
+                                
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                                
+                            </DataTrigger>
+                            
+                        </Button.Triggers>
+                        
+                    </Button>
+
+                    <sharedControls:BadgeControl Grid.Row="0"
+                                                 x:Name="secondBadge">
+
+                        <sharedControls:BadgeControl.Triggers>
+
+                            <DataTrigger TargetType="sharedControls:BadgeControl"
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}"
+                                         Value="SecondTabSelected">
+
+                                <Setter Property="Opacity"
+                                        Value="1" />
+
+                            </DataTrigger>
+
+                        </sharedControls:BadgeControl.Triggers>
+
+                    </sharedControls:BadgeControl>
+
+                    <BoxView Grid.Row="1"
+                             Margin="0"
+                             Color="{StaticResource fcolor_custom_tab_line}"
+                             Style="{StaticResource BoxViewStyleCustomTabs}">
+                        
+                        <BoxView.Triggers>
+                            
+                            <DataTrigger TargetType="BoxView" 
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}" 
+                                         Value="SecondTabSelected">
+                                
+                                <Setter Property="Color"
+                                        Value="#0084F4" />
+                                
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                                
+                            </DataTrigger>
+                            
+                        </BoxView.Triggers>
+                        
+                    </BoxView>
+                    
+                </Grid>
+                
+            </Grid>
+            
+            <Grid Grid.Column="2">
+                
+                <Grid>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Button x:Name="thirdTab"
+                            Grid.Row="0"   
+                            Style="{StaticResource CustomThreeTabsButton}"                        
+                            Clicked ="ThirdTabClicked">
+                        
+                        <Button.Triggers>
+                            
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}"
+                                         Value="ThirdTabSelected">
+                                
+                                <Setter Property="TextColor" 
+                                        Value="{StaticResource fcolor_b3}"/>
+                                
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                                
+                            </DataTrigger>
+                            
+                        </Button.Triggers>
+                        
+                    </Button>
+
+                    <sharedControls:BadgeControl Grid.Row="0"
+                                                 x:Name="thirdBadge">
+
+                        <sharedControls:BadgeControl.Triggers>
+
+                            <DataTrigger TargetType="sharedControls:BadgeControl"
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}"
+                                         Value="ThirdTabSelected">
+
+                                <Setter Property="Opacity"
+                                        Value="1" />
+
+                            </DataTrigger>
+
+                        </sharedControls:BadgeControl.Triggers>
+
+                    </sharedControls:BadgeControl>
+
+                    <BoxView Grid.Row="1"
+                             Margin="0"                     
+                             Color="{StaticResource fcolor_custom_tab_line}"
+                             Style="{StaticResource BoxViewStyleCustomTabs}">
+                        
+                        <BoxView.Triggers>
+                            
+                            <DataTrigger TargetType="BoxView" 
+                                         Binding="{Binding Source={x:Reference ThreeTabsView},Path=TabState}"
+                                         Value="ThirdTabSelected">
+                                
+                                <Setter Property="Color" 
+                                        Value= "#0084F4" />
+                                
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                                
+                            </DataTrigger>
+                            
+                        </BoxView.Triggers>
+                        
+                    </BoxView>
+                    
+                </Grid>
+                
+            </Grid>
+            
+        </Grid>
+        
+    </ContentView.Content>
+    
+</ContentView>

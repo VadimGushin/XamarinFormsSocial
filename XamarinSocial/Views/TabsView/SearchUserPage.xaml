@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                          xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+                          x:TypeArguments="viewModels:SearchUsersViewModel"
+                          x:Class="XamarinSocial.Views.TabsView.SearchUsersView"
+                          xmlns:tabsViews="clr-namespace:XamarinSocial.Views.TabsView"
+                          xmlns:sharedViews="clr-namespace:XamarinSocial.Views.Shared"                  
+                          xmlns:customElements="clr-namespace:XamarinSocial.CustomElements.Tabs"
+                          xmlns:customControls="clr-namespace:XamarinSocial.CustomElements"
+                          xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                          xmlns:models="clr-namespace:XamarinSocial.Models.Api.Responses"
+                          xmlns:effects="clr-namespace:XamarinSocial.Effects"
+                          xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                          HasNativeNavBar="False"
+                          x:Name="SearchUserPage"
+                          xmlns:converters="clr-namespace:XamarinSocial.Converters"
+                          xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+
+    <baseView:BaseContentPage.IconImageSource>
+        <FileImageSource File="search.png"/>
+    </baseView:BaseContentPage.IconImageSource>
+    <baseView:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToBoolConverslyConverter x:Key="BoolToBoolConverslyConverter"/>
+        </ResourceDictionary>
+    </baseView:BaseContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid x:Name="MainGrid"
+            BackgroundColor="{StaticResource tcolor_b4}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.03*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.03*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--List Tab-->
+            <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
+                         IsVisible="{Binding IsFirstCustomTabSelected}">
+                <!--Empty feed view-->
+                <tabsViews:EmptySearchUserView  Grid.Column="1" Grid.Row="2"
+                                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                AbsoluteLayout.LayoutFlags="SizeProportional"
+                                                IsVisible="{Binding IsSearchEmpty}"/>
+
+                <!-- Users list-->
+
+                <ScrollView Scrolled="ScrollView_Scrolled"
+                            AbsoluteLayout.LayoutFlags="All" 
+                            AbsoluteLayout.LayoutBounds="0,0,1,1" >
+                    <StackLayout Orientation="Vertical">
+                        <BoxView x:Name="BoxViewForTabs"/>
+                        <StackLayout BindableLayout.ItemsSource="{Binding Items}"
+                             Orientation="Vertical"
+                             Spacing="15"
+                             VerticalOptions="StartAndExpand">
+
+                            <BindableLayout.ItemTemplate>
+
+                                <DataTemplate x:DataType="{x:Type models:SearchUserModel}">
+                                    <sharedViews:UserSearchCell/>
+                                </DataTemplate>
+
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+
+                <!--<CollectionView x:Name="UsersCollection"  
+                                ItemsSource="{Binding Users}" 
+                                IsVisible="{Binding IsSearchEmpty, Converter={StaticResource BoolToBoolConverslyConverter}}"
+                                Scrolled="UsersCollection_Scrolled"
+                                RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommandAsync}"
+                                RemainingItemsThreshold="{Binding ItemTreshold}">
+                    <CollectionView.Header>
+                        <BoxView HeightRequest="110" Margin="0" BackgroundColor="Transparent"/>
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <sharedViews:UserSearchCell/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>-->
+            </StackLayout>
+            
+            <Grid x:Name="TabsHeader"
+                  BackgroundColor="{StaticResource tcolor_b4}"
+                  Grid.Column="1" Grid.Row="0"
+                  HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                    <ImageButton Source="filter_btn.png"
+                                 BackgroundColor="Transparent"
+                                 Command="{Binding OpenFilterViewCommandAsync}"
+                                 Padding="5"/>
+                    <ImageButton Source="sort_btn.png" 
+                                 BackgroundColor="Transparent"  
+                                 Margin="5"/>
+                </StackLayout>
+                <customElements:CustomTwoTabsView Grid.Row="1"
+                                                  mvx:Bi.nd="ClickTabCommand CustomTabClickedCommand; FirstTabText [List];  SecondTabText [Map]"
+                                                  Margin="0,0,0,15">
+                </customElements:CustomTwoTabsView>
+            </Grid>
+            
+            
+            <!--Map Tab-->
+            <StackLayout Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" 
+                         Orientation="Vertical"
+                         IsVisible="{Binding IsFirstCustomTabSelected, Converter={StaticResource BoolToBoolConverslyConverter}}">
+                <!--Empty feed view-->
+                <tabsViews:EmptySearchUserView Grid.Column="1" Grid.Row="2" 
+                                               AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                               AbsoluteLayout.LayoutFlags="SizeProportional"
+                                               IsVisible="{Binding IsSearchEmpty}"/>
+
+                <!--Empty feed view-->
+                <tabsViews:EmptySearchUserView Grid.Column="1" Grid.Row="2" 
+                                               AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                               AbsoluteLayout.LayoutFlags="SizeProportional"
+                                               IsVisible="{Binding IsSearchEmpty, Converter={StaticResource BoolToBoolConverslyConverter}}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

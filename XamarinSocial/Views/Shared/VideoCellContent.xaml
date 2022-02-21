@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Shared.VideoCellContent" 
+             xmlns:video="clr-namespace:XamarinSocial.CustomElements.VideoPlayer"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:effects="clr-namespace:XamarinSocial.Effects">
+    <ContentView.Content>
+        <!--video content-->
+        <Frame Style="{StaticResource frameStyle_i3}">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="StopTapGestureRecognizer_Tapped"/>
+            </Frame.GestureRecognizers>
+            <Frame.Effects>
+                <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+            </Frame.Effects>
+            <RelativeLayout Margin="0" 
+                            Padding="0" 
+                            HorizontalOptions="Fill" 
+                            VerticalOptions="Fill">
+                <RelativeLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="StopTapGestureRecognizer_Tapped"/>
+                </RelativeLayout.GestureRecognizers>
+                <video:VideoPlayer x:Name="videoContainer"
+                                   Margin="0" 
+                                   AreTransportControlsEnabled="False"
+                                   AutoPlay="False"
+                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_1}}">
+                </video:VideoPlayer>
+                <ffimageloading:CachedImage
+                            x:Name="imagePreview"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_1}}"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                            RetryCount= "3"
+                            RetryDelay= "600"
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFill">
+                </ffimageloading:CachedImage>
+
+                <!--loading control-->
+                <StackLayout Style="{StaticResource stackLayoutStyle_1}"
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_1}}"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                             Orientation="Vertical">
+                    <ActivityIndicator
+                        x:Name="loadingIndicator"
+                        IsRunning="False"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <!--play control-->
+                <StackLayout Style="{StaticResource stackLayoutStyle_1}"
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_1}}"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                             Orientation="Vertical">
+                    <ffimageloading:CachedImage
+                            x:Name="imagePlay"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="Center"
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFit"
+                            Source="play_video.png">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PlayTapGestureRecognizer_Tapped"/>
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
+                </StackLayout>
+            </RelativeLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

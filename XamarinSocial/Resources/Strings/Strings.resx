@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActiveUsers" xml:space="preserve">
+    <value>Active Users</value>
+  </data>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>Add photo</value>
+  </data>
+  <data name="ADigitConfirmationCodeHasBeenSent" xml:space="preserve">
+    <value>A 7-digit confirmation code has been sent</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Advanced:</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="AnyMatchesNotFound" xml:space="preserve">
+    <value>Any matches not found!</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BeFirstAndWriteWhatInYourMind" xml:space="preserve">
+    <value>Be first and write what in your mind!</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangePhoto" xml:space="preserve">
+    <value>Change photo</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="CountryCode" xml:space="preserve">
+    <value>Country Code</value>
+  </data>
+  <data name="CreateNewFeed" xml:space="preserve">
+    <value>Create new feed</value>
+  </data>
+  <data name="CreatePost" xml:space="preserve">
+    <value>Create Post</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Distance, km:</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterAnotherCategoriesForSearch" xml:space="preserve">
+    <value>Enter another categories for search.</value>
+  </data>
+  <data name="EnterYourPhoneNumber" xml:space="preserve">
+    <value>Enter your phone number</value>
+  </data>
+  <data name="Ethnicity" xml:space="preserve">
+    <value>Ethnicity</value>
+  </data>
+  <data name="Eyes" xml:space="preserve">
+    <value>Eyes</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Forget password?</value>
+  </data>
+  <data name="GetPhotoFrom:" xml:space="preserve">
+    <value>Get Photo from:</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Get started</value>
+  </data>
+  <data name="GettingStarted" xml:space="preserve">
+    <value>Getting Started</value>
+  </data>
+  <data name="HAgo" xml:space="preserve">
+    <value>h ago</value>
+  </data>
+  <data name="Hair" xml:space="preserve">
+    <value>Hair</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="IAm" xml:space="preserve">
+    <value>I am :</value>
+  </data>
+  <data name="LandLine" xml:space="preserve">
+    <value>Landline</value>
+  </data>
+  <data name="Like" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location:</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="LookingFor" xml:space="preserve">
+    <value>Looking for :</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="Match" xml:space="preserve">
+    <value>Match</value>
+  </data>
+  <data name="MyPreferences" xml:space="preserve">
+    <value>My Preferences</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NewFriends" xml:space="preserve">
+    <value>new friends</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="NoFeed" xml:space="preserve">
+    <value>No feed</value>
+  </data>
+  <data name="NoMatches" xml:space="preserve">
+    <value>NoMatches</value>
+  </data>
+  <data name="OrSignInWith" xml:space="preserve">
+    <value>Or Sign in with</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Popular" xml:space="preserve">
+    <value>Popular</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="ResendCode" xml:space="preserve">
+    <value>Resend Code</value>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>Reset Your Password</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SetupNewPassword" xml:space="preserve">
+    <value>Set New Password</value>
+  </data>
+  <data name="SexualOrientation" xml:space="preserve">
+    <value>Sexual Orientation</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SigningUpOrLoginToMeet" xml:space="preserve">
+    <value>Signing up or login to meet</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="Soon" xml:space="preserve">
+    <value>soon</value>
+  </data>
+  <data name="Interests" xml:space="preserve">
+    <value>Interests</value>
+  </data>
+  <data name="TheCodeWillBeSentToThisNumberTo" xml:space="preserve">
+    <value>The code will be sent to this number to</value>
+  </data>
+  <data name="ThereNoAnyFeedsYet" xml:space="preserve">
+    <value>There no any feeds yet.</value>
+  </data>
+  <data name="ThisIsHowYourFriendsWillKnowItsYou" xml:space="preserve">
+    <value>This is how your friends will know it's you</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Try again!</value>
+  </data>
+  <data name="VerifyByPhoneCall" xml:space="preserve">
+    <value>Verify by Phone call</value>
+  </data>
+  <data name="VerifyBySMS" xml:space="preserve">
+    <value>Verify by SMS</value>
+  </data>
+  <data name="VerifyMe" xml:space="preserve">
+    <value>Verify Me</value>
+  </data>
+  <data name="VerifyYourIdentity" xml:space="preserve">
+    <value>verify your identity</value>
+  </data>
+  <data name="ViaSMS" xml:space="preserve">
+    <value>via SMS</value>
+  </data>
+  <data name="WaitForTheCallForConfirmation" xml:space="preserve">
+    <value>Wait for the call for confirmation</value>
+  </data>
+  <data name="WhatIsInYourMind" xml:space="preserve">
+    <value>What’s in your mind?</value>
+  </data>
+  <data name="WhatsYourName" xml:space="preserve">
+    <value>What's your name?</value>
+  </data>
+  <data name="Liked" xml:space="preserve">
+    <value>Liked</value>
+  </data>
+  <data name="MaxHeight" xml:space="preserve">
+    <value>Max Height</value>
+  </data>
+  <data name="MinHeight" xml:space="preserve">
+    <value>Min Height</value>
+  </data>
+  <data name="LocationOnly" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Feed" xml:space="preserve">
+    <value>Feed</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>online</value>
+  </data>
+  <data name="PersonalDetails" xml:space="preserve">
+    <value>Personal Details</value>
+  </data>
+  <data name="BodyTypeColon" xml:space="preserve">
+    <value>BodyType:</value>
+  </data>
+  <data name="DrinkingColon" xml:space="preserve">
+    <value>Drinking:</value>
+  </data>
+  <data name="EthnicityColon" xml:space="preserve">
+    <value>Ethnicity:</value>
+  </data>
+  <data name="HaveKidsColon" xml:space="preserve">
+    <value>Have Kids:</value>
+  </data>
+  <data name="HeightColon" xml:space="preserve">
+    <value>Height:</value>
+  </data>
+  <data name="ReligionColon" xml:space="preserve">
+    <value>Religion:</value>
+  </data>
+  <data name="SmockingColon" xml:space="preserve">
+    <value>Smocking:</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="ChangeAvatar" xml:space="preserve">
+    <value>Change Avatar</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Invalid Name</value>
+  </data>
+  <data name="AboutMe" xml:space="preserve">
+    <value>About Me</value>
+  </data>
+  <data name="MyAlbum" xml:space="preserve">
+    <value>My Album</value>
+  </data>
+  <data name="PersonalDetails:" xml:space="preserve">
+    <value>Personal Details:</value>
+  </data>
+  <data name="BodyType" xml:space="preserve">
+    <value>Body Type</value>
+  </data>
+  <data name="Drinking" xml:space="preserve">
+    <value>Drinking</value>
+  </data>
+  <data name="Kids" xml:space="preserve">
+    <value>Kids</value>
+  </data>
+  <data name="Religion" xml:space="preserve">
+    <value>Religion</value>
+  </data>
+  <data name="Smocking" xml:space="preserve">
+    <value>Smocking</value>
+  </data>
+  <data name="Added" xml:space="preserve">
+    <value>Added</value>
+  </data>
+  <data name="SymbolsFrom" xml:space="preserve">
+    <value>symbols from</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="AccountsSettings" xml:space="preserve">
+    <value>Accounts Settings</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangeYourCurrentPassword" xml:space="preserve">
+    <value>Change your current password</value>
+  </data>
+  <data name="Comments(Settings)" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="FriendsRequests" xml:space="preserve">
+    <value>Friend Requests</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="InterestingPosts" xml:space="preserve">
+    <value>Interesting Posts</value>
+  </data>
+  <data name="InviteYourFriends" xml:space="preserve">
+    <value>Invite your friends</value>
+  </data>
+  <data name="Likes" xml:space="preserve">
+    <value>Likes</value>
+  </data>
+  <data name="NameEmailSecurity" xml:space="preserve">
+    <value>Name, Email, Security</value>
+  </data>
+  <data name="NewContractsSignOrSend" xml:space="preserve">
+    <value>New Contracts Sign or Send</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="NotificationsSettings" xml:space="preserve">
+    <value>Notifications settings</value>
+  </data>
+  <data name="PhotoTags" xml:space="preserve">
+    <value>Photo Tags</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="PrivateMessages" xml:space="preserve">
+    <value>Private Messages</value>
+  </data>
+  <data name="ProfileInformation" xml:space="preserve">
+    <value>Profile Information</value>
+  </data>
+  <data name="PushNotifications" xml:space="preserve">
+    <value>Push Notifications</value>
+  </data>
+  <data name="RateAndReviewUs" xml:space="preserve">
+    <value>Rate &amp; Review us</value>
+  </data>
+  <data name="RateOurApp" xml:space="preserve">
+    <value>Rate our App</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Send Feedback</value>
+  </data>
+  <data name="ShareYourThought" xml:space="preserve">
+    <value>Share your thought</value>
+  </data>
+  <data name="SocialNetworks" xml:space="preserve">
+    <value>Social networks</value>
+  </data>
+  <data name="TermsAndConditionals" xml:space="preserve">
+    <value>Terms &amp; Conditionals</value>
+  </data>
+  <data name="ShowNotifications" xml:space="preserve">
+    <value>Show notifications</value>
+  </data>
+  <data name="InviteFriends" xml:space="preserve">
+    <value>Invite friends</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="FacebookFriends" xml:space="preserve">
+    <value>Facebook friends</value>
+  </data>
+  <data name="BlockedUsers" xml:space="preserve">
+    <value>Blocked users</value>
+  </data>
+  <data name="Updates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="Views" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="Leaved" xml:space="preserve">
+    <value>Leaved</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>post</value>
+  </data>
+  <data name="Replied" xml:space="preserve">
+    <value>Replied</value>
+  </data>
+  <data name="Viewed" xml:space="preserve">
+    <value>Viewed</value>
+  </data>
+  <data name="Your" xml:space="preserve">
+    <value>your</value>
+  </data>
+  <data name="At" xml:space="preserve">
+    <value>At</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="EmptyChatsMessage" xml:space="preserve">
+    <value>You have not any messages yet. Find some friends to chat!</value>
+  </data>
+  <data name="NoMessages" xml:space="preserve">
+    <value>No messages</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Text message...</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+</root>

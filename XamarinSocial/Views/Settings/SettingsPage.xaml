@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.Settings;assembly=XamarinSocial"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:settingsControls="clr-namespace:XamarinSocial.CustomElements.Settings"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.Settings.SettingsPage"
+                           xmlns:localization="clr-namespace:XamarinSocial.Resources.Strings"
+                           x:TypeArguments="viewModels:SettingsViewModel"
+                           HasNativeNavBar="False"
+                           Title="SettingsPage">
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical"
+                     Spacing="10"
+                     Padding="0,20">
+
+            <Label Style="{StaticResource welcomStyle_i8}"
+                   Margin="20,0">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Label.GestureRecognizers>
+
+                <Label.FormattedText>
+
+                    <FormattedString>
+
+                        <FormattedString.Spans>
+
+                            <Span Text="&#xf053; "
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="FontAwesome5Solid">
+                            </Span>
+
+                            <Span mvx:Bi.nd="Text [Back]" 
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="SFProDisplayRegular">
+                            </Span>
+
+                        </FormattedString.Spans>
+
+                    </FormattedString>
+
+                </Label.FormattedText>
+
+            </Label>
+
+            <ScrollView>
+
+                <StackLayout Orientation="Vertical"
+                             Spacing="10">
+
+                    <Label mvx:Bi.nd="Text [Settings]"
+                           Style="{StaticResource welcomStyle_i9}"
+                           Padding="15"/>
+
+                    <BoxView Style="{StaticResource BoxViewStyle_i1}"/>
+
+                    <Label Style="{StaticResource settings_i1}"
+                           Text="{x:Static localization:Strings.AccountsSettings}"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.ProfileInformation}"
+                                                     BottomText="{x:Static localization:Strings.NameEmailSecurity}" 
+                                                     TapCommand="{mvx:MvxBind OpenProfileInfoCommand}"
+                                                     ImageSource="img_profileInfo.svg"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.SocialNetworks}"
+                                                     BottomText="{x:Static localization:Strings.InviteYourFriends}"  
+                                                     TapCommand="{mvx:MvxBind OpenSocialNetworkCommand}"
+                                                     ImageSource="img_socialNetwork.svg"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.ChangePassword}"
+                                                     BottomText="{x:Static localization:Strings.ChangeYourCurrentPassword}" 
+                                                     TapCommand="{mvx:MvxBind ChangePasswordCommand}"
+                                                     ImageSource="img_changePassword.svg"/>
+
+                    <BoxView BackgroundColor="Transparent"
+                             HeightRequest="10"/>
+
+                    <Label Style="{StaticResource settings_i1}"
+                           Text="{x:Static localization:Strings.NotificationsSettings}"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.PushNotifications}"
+                                                     BottomText="{x:Static localization:Strings.NewContractsSignOrSend}" 
+                                                     TapCommand="{mvx:MvxBind OpenNotificationsCommand}"
+                                                     ImageSource="img_pushNotifications.svg"/>
+
+                    <BoxView BackgroundColor="Transparent"
+                             HeightRequest="10"/>
+
+                    <Label Style="{StaticResource settings_i1}"
+                           Text="{x:Static localization:Strings.General}"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.RateOurApp}"
+                                                     BottomText="{x:Static localization:Strings.RateAndReviewUs}" 
+                                                     TapCommand="{mvx:MvxBind RateAppCommand}"
+                                                     ImageSource="img_rateApp.svg"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.SendFeedback}"
+                                                     BottomText="{x:Static localization:Strings.ShareYourThought}"  
+                                                     TapCommand="{mvx:MvxBind SendFeedbackCommand}"
+                                                     ImageSource="img_feedback.svg"/>
+
+                    <settingsControls:SettingsButton TopText="{x:Static localization:Strings.PrivacyPolicy}"
+                                                     BottomText="{x:Static localization:Strings.TermsAndConditionals}"  
+                                                     TapCommand="{mvx:MvxBind OpenPrivacyPolicyCommand}"
+                                                     ImageSource="img_privacyPolicy.svg"/>
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Shared.ImageCellContent"
+             xmlns:converters="clr-namespace:XamarinSocial.Converters"
+             xmlns:effects="clr-namespace:XamarinSocial.Effects"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <ContentView.Resources>
+        <converters:PostToImageSourceConverter x:Key="PostToImageSourceConverter"/>
+        <converters:ImagePostToIsVisibleBoolConverter x:Key="ImagePostToIsVisibleBoolConverter"/>
+        <converters:PostToAdditionalElementsStringConverter x:Key="PostToAdditionalElementsStringConverter"/>
+        <converters:PostToIsVisibleAdditionalElementsBoolConverter x:Key="PostToIsVisibleAdditionalElementsBoolConverter"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Style="{StaticResource stackLayoutStyle_1}">
+
+            <!--image content-->
+            <RelativeLayout Margin="0" 
+                            Padding="0" 
+                            HorizontalOptions="Fill" 
+                            VerticalOptions="Fill"
+                            IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=4}">
+                <Frame Style="{StaticResource frameStyle_i3}"
+                           RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                           RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_1}}">
+                    <Frame.Effects>
+                        <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                    </Frame.Effects>
+                    
+                    <ffimageloading:CachedImage
+                            Aspect="AspectFill"
+                            DownsampleToViewSize="False"
+                            Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=4}">
+                    </ffimageloading:CachedImage>
+                </Frame>
+            </RelativeLayout>
+
+            <RelativeLayout Margin="0" 
+                            Padding="0" 
+                            HorizontalOptions="Fill" 
+                            VerticalOptions="Fill"
+                            IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=1}">
+                <RelativeLayout Margin="0" 
+                                Padding="0"
+                                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_1}}">
+
+                    <Grid RowSpacing="5" ColumnSpacing="5" 
+                          VerticalOptions="Fill"
+                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2.56*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.Column="1" Grid.Row="0"  
+                               Style="{StaticResource frameStyle_i3}">
+                            <Frame.Effects>
+                                <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                            </Frame.Effects>
+                            <ffimageloading:CachedImage
+                                                    DownsampleToViewSize="True" 
+                                                    Margin="0" 
+                                                    Aspect="AspectFill" 
+                                                    Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=2}"/>
+                        </Frame>
+
+                        <Frame Grid.Column="1" Grid.Row="1" 
+                               Style="{StaticResource frameStyle_i3}">
+                            <Frame.Effects>
+                                <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                            </Frame.Effects>
+                            <ffimageloading:CachedImage DownsampleToViewSize="True"
+                                                        Aspect="AspectFill" 
+                                                        Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=3}"/>
+                        </Frame>
+                        <BoxView Grid.Column="1" Grid.Row="1" 
+                                 VerticalOptions="Fill" 
+                                 HorizontalOptions="Fill"
+                                 Style="{StaticResource BoxViewStyle_i2}"
+                                 IsVisible="{Binding . , Converter={StaticResource PostToIsVisibleAdditionalElementsBoolConverter}}"/>
+                        <Label  Grid.Column="1" Grid.Row="1" 
+                                Text="{Binding . , Converter={StaticResource PostToAdditionalElementsStringConverter}}"
+                                Style="{StaticResource welcomStyle_i22}"
+                                IsVisible="{Binding . , Converter={StaticResource PostToIsVisibleAdditionalElementsBoolConverter}}"/>
+
+                        <Frame Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                               Style="{StaticResource frameStyle_i3}">
+                            <Frame.Effects>
+                                <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                            </Frame.Effects>
+                            <ffimageloading:CachedImage Aspect="AspectFill" 
+                                                        Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=1}"
+                                                        IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=1}"/>
+                        </Frame>
+
+                        <ffimageloading:CachedImage Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                            x:Name="imagePlay"
+                            IsVisible="False"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFit"
+                            Source="play_video.png">
+                        </ffimageloading:CachedImage>
+                    </Grid>
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

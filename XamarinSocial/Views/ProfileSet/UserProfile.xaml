@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.ProfileSet;assembly=XamarinSocial"
+                           xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.ProfileSet.UserProfile"
+                           x:TypeArguments="viewModels:UserProfileViewModel"
+                           xmlns:converters="clr-namespace:XamarinSocial.Converters"
+                           xmlns:range_slider="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+                           xmlns:ffiamgeloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+                           xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                           xmlns:effects="clr-namespace:XamarinSocial.Effects"
+                           xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                           HasNativeNavBar="False"      
+                           Title="UserProfile">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <converters:NullToBoolConverslyConverter x:Key="NullToBoolConverslyConverter"/>
+                    <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+                </ResourceDictionary>
+            </Grid.Resources>
+
+            <!-- Third Profile Grid-->
+            <Grid x:Name="ThirdGridView"
+                  BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row ="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" 
+                       Style="{StaticResource welcomStyle_i8}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GoToSecondViewCommand"/>
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="&#xf053; "
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="FontAwesome5Solid">
+                                    </Span>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Column="1"
+                       Style="{StaticResource welcomStyle_i16}"
+                       HorizontalTextAlignment="Center"
+                       mvx:Bi.nd="Text [Profile]"/>
+                </Grid>
+                <BoxView  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
+                     Style="{StaticResource BoxViewStyle_i1}"/>
+                <Frame  Grid.Column="1" Grid.Row=" 3"
+                        Margin="0,10"
+                        Style="{StaticResource frameStyle_i1}">
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsVisiblePhotoFrame}" Value="false">
+                            <Setter Property="BorderColor" Value="Transparent"/>
+                            <Setter Property="BackgroundColor" Value="Transparent"/>
+                        </DataTrigger>
+                    </Frame.Triggers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <ffiamgeloading:CachedImage x:Name="uploadImage"
+                                                    Grid.Row="0" Grid.RowSpan="5" 
+                                                    Grid.Column="0" Grid.ColumnSpan="3"
+                                                    DownsampleToViewSize="True"
+                                                    Aspect="AspectFit"
+                                                    IsVisible="False"
+                                                    Source="{Binding UploadedImageSource}">
+                            <ffiamgeloading:CachedImage.Transformations>
+                                <fftransformations:RoundedTransformation/>
+                            </ffiamgeloading:CachedImage.Transformations>
+                            <ffiamgeloading:CachedImage.Triggers>
+                                <DataTrigger TargetType="ffiamgeloading:CachedImage" Binding="{Binding Source={x:Reference uploadImage}, Path=Source}" Value="{x:Null}">
+                                    <Setter Property="IsVisible" Value="False"/>
+                                </DataTrigger>
+                            </ffiamgeloading:CachedImage.Triggers>
+                            <ffiamgeloading:CachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UploadImageCommandAsync}" />
+                            </ffiamgeloading:CachedImage.GestureRecognizers>
+                        </ffiamgeloading:CachedImage>
+                        <ImageButton Grid.Row="1" Grid.Column="1" 
+                                     Source ="plus_button.png"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     BackgroundColor="Transparent"
+                                     Clicked="GradientButton_Clicked"
+                                     mvx:Bi.nd="IsVisible IsFirstPhotoButtonVisible"/>
+                        <Label Grid.Row="3" Grid.Column="1" 
+                               mvx:Bi.nd="Text [AddPhoto]; IsVisible IsFirstPhotoButtonVisible"
+                               Style="{StaticResource welcomStyle_i4}"/>
+                        <customelements:GradientButton Grid.Row="3" Grid.Column="1" 
+                                                       Style="{StaticResource gradientButtonStyle_i1}"
+                                                       Clicked="GradientButton_Clicked"
+                                                       mvx:Bi.nd="Text [ChangePhoto]; IsVisible IsChangePhotoButtonVisible"/>
+                    </Grid>
+
+                </Frame>
+                <customelements:GradientButton Grid.Column="1" Grid.Row="5"
+                                               Style="{StaticResource gradientButtonStyle_i1}"
+                                               mvx:Bi.nd="Text [Next]; Command GoToMainTabbedViewAsyncCommand"/>
+            </Grid>
+
+            <!--Second Profile Page-->
+            <Grid BackgroundColor="White"
+                  x:Name="SecondViewGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.7*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row ="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" 
+                       Style="{StaticResource welcomStyle_i8}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GoToFirstViewCommand"/>
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="&#xf053; "
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="FontAwesome5Solid">
+                                    </Span>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Column="1"
+                       Style="{StaticResource welcomStyle_i16}"
+                       HorizontalTextAlignment="Center"
+                       mvx:Bi.nd="Text [Profile]"/>
+                </Grid>
+                <BoxView  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
+                     Style="{StaticResource BoxViewStyle_i1}"/>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"
+                           Style="{StaticResource welcomStyle_i16}"
+                           mvx:Bi.nd="Text [IAm]"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton  Grid.Column="0" 
+                                      Source="female.png"
+                                      Style="{StaticResource ImageButtonStyle_i1}"
+                                      mvx:Bi.nd="Opacity IAmFemaleOpacity; Command IAmFemaleCommand"/>
+                        <ImageButton  Grid.Column="1" 
+                                     Source="male.png"
+                                      Style="{StaticResource ImageButtonStyle_i1}"
+                                      mvx:Bi.nd="Opacity IAmMaleOpacity; Command IAmMaleCommand"/>
+                        <ImageButton  Grid.Column="2" 
+                                     Source="other_active.png"
+                                      Style="{StaticResource ImageButtonStyle_i1}"
+                                      mvx:Bi.nd="Opacity IAmOtherOpacity; Command IAmOtherCommand"/>
+
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"
+                           Style="{StaticResource welcomStyle_i16}"
+                           mvx:Bi.nd="Text [LookingFor]"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton  Grid.Column="0" 
+                                      Source="female.png"
+                                      Style="{StaticResource ImageButtonStyle_i1}"
+                                      mvx:Bi.nd="Opacity LookingForFemaleOpacity; Command LookingForFemaleCommand"/>
+                        <ImageButton  Grid.Column="1" 
+                                     Source="male.png"
+                                      Style="{StaticResource ImageButtonStyle_i1}"
+                                      mvx:Bi.nd="Opacity LookingForMaleOpacity; Command LookingForMaleCommand"/>
+                        <ImageButton  Grid.Column="2" 
+                                     Source="other_active.png"
+                                      Style="{StaticResource ImageButtonStyle_i1}"
+                                      mvx:Bi.nd="Opacity LookingForOtherOpacity; Command LookingForOtherCommand"/>
+
+                    </Grid>
+
+                </Grid>
+                <Label Grid.Row="6" Grid.Column="1"
+                       Style="{StaticResource welcomStyle_i16}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span mvx:Bi.nd= "Text [Age]"/>
+                                <Span Text="{Binding MinLookingAge, StringFormat=' {0} - '} " TextColor="{StaticResource tcolor_b2}"/>
+                                <Span Text="{Binding MaxLookingAge, StringFormat=' {0} :'} " TextColor="{StaticResource tcolor_b2}"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Grid Grid.Row ="7" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <range_slider:RangeSlider Grid.Row ="0" Grid.Column="0"
+                                           x:Name="RangeSliderWithEffect"
+                                           LowerValue="{Binding MinLookingAge}" 
+                                           UpperValue="{Binding MaxLookingAge}" 
+              
+                                          Style="{StaticResource RangeSlider_i1}">
+
+                        <range_slider:RangeSlider.Effects>
+                            <effects:RangeSliderEffect/>
+                        </range_slider:RangeSlider.Effects>
+
+                    </range_slider:RangeSlider >
+                    <Label Grid.Row ="0" Grid.Column="1" 
+                           Text="60" 
+                           Style="{StaticResource welcomStyle_i14}"
+                           TextColor="#5B6D86"/>
+                </Grid>
+
+                <Label Grid.Row="8" Grid.Column="1"
+                           Style="{StaticResource welcomStyle_i16}"
+                           mvx:Bi.nd="Text [Region]"/>
+                
+                <!--Location area-->
+                <Frame Grid.Row="9"  Grid.Column="1"
+                       Style="{StaticResource frameStyle_i1}"
+                       Margin="0,5">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToSearchLocationViewCommandAsync}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <Label mvx:Bi.nd="Text [LocationOnly]"
+                                   Grid.Column="0"
+                                   Style="{StaticResource searchUserLocation}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding SearchLocation, Converter={StaticResource NullToBoolConverter}}" Value="False" >
+                                    <Setter Property="Text" Value="{Binding SearchLocation}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <ffimageloadingsvg:SvgCachedImage Grid.Column="1"
+                                                              DownsampleToViewSize="True" 
+                                                              Margin="0,0,10,0"
+                                                              Aspect="AspectFit"
+                                                              Source="location_dot.svg"
+                                                              HorizontalOptions="End"/>
+                    </Grid>
+
+                </Frame>
+
+                <Grid Grid.Row="10" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" 
+                            mvx:Bi.nd="Text [Skip]; Command SkipCommand"
+                            Style="{StaticResource ButtonStyle_i2}"/>
+                    <customelements:GradientButton Grid.Column="1"
+                                                   mvx:Bi.nd="Text [Next]"
+                                                   Clicked="GoToThirdViewCommand"
+                                                   Style="{StaticResource gradientButtonStyle_i1}"/>
+                </Grid>
+            </Grid>
+
+            <!-- First Profile Page-->
+            <Grid BackgroundColor="White"
+                  x:Name="FirstViewGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row ="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" 
+                       Style="{StaticResource welcomStyle_i8}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AppCloseCommand}"/>
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="&#xf053; "
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="FontAwesome5Solid">
+                                    </Span>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Column="1"
+                       Style="{StaticResource welcomStyle_i16}"
+                       HorizontalTextAlignment="Center"
+                       mvx:Bi.nd="Text [Profile]"/>
+                </Grid>
+                <BoxView  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
+                     Style="{StaticResource BoxViewStyle_i1}"/>
+                <Label Grid.Row="3" Grid.Column="1"
+                   mvx:Bi.nd="Text [WhatsYourName]"
+                   Style="{StaticResource welcomStyle_i15}"/>
+                <Label Grid.Row="4" Grid.Column="1"
+                   mvx:Bi.nd="Text [ThisIsHowYourFriendsWillKnowItsYou]"
+                   Style="{StaticResource welcomStyle_i4}"/>
+                <customelements:CustomEntry Grid.Row="5" Grid.Column="1"
+                                        Style="{StaticResource entryStyle_i2}"
+                                        mvx:Bi.nd ="Text UserName; Placeholder AuthUserName"/>
+                <customelements:GradientButton Grid.Row="7" Grid.Column="1"
+                                           mvx:Bi.nd="Text [Next]"
+                                           Clicked="GoToSecondViewCommand"
+                                           Style="{StaticResource gradientButtonStyle_i1}"/>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+             xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             x:TypeArguments="viewModels:SearchFilterViewModel"
+             xmlns:range_slider="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+             x:Class="XamarinSocial.Views.TabsView.SearchFilterView"
+             xmlns:effects="clr-namespace:XamarinSocial.Effects"
+             xmlns:converters="clr-namespace:XamarinSocial.Converters"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             HasNativeNavBar="False"      
+             Title="Search User Filter">
+    <ContentPage.Content>
+        <ScrollView>
+            <ScrollView.Resources>
+                <ResourceDictionary>
+                    <converters:NullToBoolConverslyConverter x:Key="NullToBoolConverslyConverter"/>
+                    <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+                </ResourceDictionary>
+            </ScrollView.Resources>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical"
+                             Margin="10">
+                    <Label Style="{StaticResource welcomStyle_i8}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="&#xf053; "
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="FontAwesome5Solid">
+                                    </Span>
+                                    <Span mvx:Bi.nd="Text [Back]" 
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="SFProDisplayRegular">
+                                    </Span>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                    mvx:Bi.nd="Text [Search]"
+                    Style="{StaticResource welcomStyle_i9}"/>
+                    <BoxView Style="{StaticResource BoxViewStyle_i1}"/>
+                    <Label Grid.Row="0"
+                           Style="{StaticResource welcomStyle_i16}"
+                           mvx:Bi.nd="Text [MyPreferences]"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton  Grid.Column="0"
+                                  Source="search_user_female_active.png"
+                                  Style="{StaticResource ImageButtonSearchUser}"
+                                  mvx:Bi.nd="Opacity SearchFemaleOpacity; Command SearchFemaleCommand"/>
+                        <ImageButton  Grid.Column="1" 
+                                  Source="search_user_male_active.png"
+                                  Style="{StaticResource ImageButtonSearchUser}"
+                                  mvx:Bi.nd="Opacity SearchMaleOpacity; Command SearchMaleCommand"/>
+                        <ImageButton  Grid.Column="2" 
+                                  Source="search_user_other_active.png"
+                                  Style="{StaticResource ImageButtonSearchUser}"
+                                  mvx:Bi.nd="Opacity SearchOtherOpacity; Command SearchOtherCommand"/>
+                        <ImageButton  Grid.Column="3" 
+                                  Source="search_user_all_active.png"
+                                  Style="{StaticResource ImageButtonSearchUser}"
+                                  mvx:Bi.nd="Opacity SearchAllOpacity; Command SearchAllCommand"/>
+                    </Grid>
+
+                    <Label Style="{StaticResource welcomStyle_i16}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span mvx:Bi.nd= "Text [Age]"/>
+                                    <Span Text="{Binding MinLookingAge, StringFormat=' {0} - '} " TextColor="{StaticResource tcolor_b2}"/>
+                                    <Span Text="{Binding MaxLookingAge, StringFormat=' {0} :'} " TextColor="{StaticResource tcolor_b2}"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <range_slider:RangeSlider Grid.Row ="0" Grid.Column="0"
+                                           x:Name="RangeSliderWithEffect"
+                                           LowerValue="{Binding MinLookingAge}" 
+                                           UpperValue="{Binding MaxLookingAge}" 
+              
+                                          Style="{StaticResource RangeSlider_i1}">
+
+                            <range_slider:RangeSlider.Effects>
+                                <effects:RangeSliderEffect/>
+                            </range_slider:RangeSlider.Effects>
+
+                        </range_slider:RangeSlider >
+                        <Label Grid.Row ="0" Grid.Column="1" 
+                           Text="60" 
+                           Style="{StaticResource welcomStyle_i14}"
+                           TextColor="#5B6D86"/>
+                    </Grid>
+
+                    <Label Style="{StaticResource welcomStyle_i16}"
+                       mvx:Bi.nd="Text [Location]"/>
+                    
+                    <!--Location area-->
+                        <Frame Style="{StaticResource frameStyle_i1}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToSearchLocationViewCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+                            <Label mvx:Bi.nd="Text [LocationOnly]"
+                                   Grid.Column="0"
+                                   Style="{StaticResource searchUserLocation}">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding SearchLocation, Converter={StaticResource NullToBoolConverter}}" Value="False" >
+                                            <Setter Property="Text" Value="{Binding SearchLocation}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                            </Label>
+                            <ffimageloadingsvg:SvgCachedImage Grid.Column="1"
+                                                              DownsampleToViewSize="True" 
+                                                              Margin="0,0,10,0"
+                                                              Aspect="AspectFit"
+                                                              Source="location_dot.svg"
+                                                              HorizontalOptions="End"/>
+                        </Grid>
+                               
+                    </Frame>
+
+                   
+                    <Label Style="{StaticResource welcomStyle_i16}"
+                        mvx:Bi.nd="Text [Distance]"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <range_slider:RangeSlider Grid.Row ="0" Grid.Column="0"
+                                              LowerValue="{Binding MinDistance}" 
+                                              UpperValue="{Binding MaxDistance}"     
+                                              Style="{StaticResource RangeSliderDistance}">
+
+                            <range_slider:RangeSlider.Effects>
+                                <effects:RangeSliderEffect/>
+                            </range_slider:RangeSlider.Effects>
+
+                        </range_slider:RangeSlider >
+                        <Label Grid.Row ="0" Grid.Column="1" 
+                           Text="20" 
+                           Style="{StaticResource welcomStyle_i14}"
+                           TextColor="#5B6D86"/>
+                    </Grid>
+                    <Label Style="{StaticResource welcomStyle_i16}"
+                        mvx:Bi.nd="Text [Advanced]"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0"
+                                mvx:Bi.nd="Text [Popular]"
+                                Command="{Binding SetPopularUserCommand}"
+                                Style="{StaticResource SearchUserButton}">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding IsPopular}" Value="True">
+                                    <Setter Property="TextColor" Value="White"/>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource user_search_button_bg}"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                        <Button Grid.Row="0" Grid.Column="1"
+                                mvx:Bi.nd="Text [ActiveUsers]"
+                                Command="{Binding SetActiveUsersCommand}"
+                                Style="{StaticResource SearchUserButton}">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding IsActiveUsers}" Value="True">
+                                    <Setter Property="TextColor" Value="White"/>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource fcolor_b3}"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" 
+                            Style="{StaticResource searchUserFrameButton}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEthnicityDropDownCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       mvx:Bi.nd="Text [Ethnicity]"
+                                       LineBreakMode="TailTruncation"
+                                       Style="{StaticResource welcomStyle_i16}"
+                                       Margin="10,0,0,0">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding UserFilter.Ethnicity, Converter={StaticResource NullToBoolConverslyConverter}}" Value="True" >
+                                            <Setter Property="Text" Value="{Binding UserFilter.Ethnicity}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                   Text="&#xf078;"
+                                   Style="{StaticResource searchUserDown}"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" 
+                            Style="{StaticResource searchUserFrameButton}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenMinHeightDropDownCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       mvx:Bi.nd="Text [MinHeight]"   
+                                       LineBreakMode="TailTruncation"
+                                       Style="{StaticResource welcomStyle_i16}"
+                                       Margin="10,0,0,0">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding UserFilter.MinHeight, Converter={StaticResource NullToBoolConverslyConverter}}" Value="True" >
+                                            <Setter Property="Text" Value="{Binding UserFilter.MinHeight}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                   Text="&#xf078;"
+                                   Style="{StaticResource searchUserDown}"/>
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" 
+                            Style="{StaticResource searchUserFrameButton}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenMaxHeightDropDownCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       mvx:Bi.nd="Text [MaxHeight]" 
+                                       LineBreakMode="TailTruncation"
+                                       Style="{StaticResource welcomStyle_i16}"
+                                       Margin="10,0,0,0">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding UserFilter.MaxHeight, Converter={StaticResource NullToBoolConverslyConverter}}" Value="True" >
+                                            <Setter Property="Text" Value="{Binding UserFilter.MaxHeight}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                   Text="&#xf078;"
+                                   Style="{StaticResource searchUserDown}"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0"
+                           Style="{StaticResource searchUserFrameButton}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenSexualOrientationDropDownCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       mvx:Bi.nd="Text [SexualOrientation]"  
+                                       LineBreakMode="TailTruncation"
+                                       Style="{StaticResource welcomStyle_i16}"
+                                       Margin="10,0,0,0">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding UserFilter.SexualOrientation, Converter={StaticResource NullToBoolConverslyConverter}}" Value="True" >
+                                            <Setter Property="Text" Value="{Binding UserFilter.SexualOrientation}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                   Text="&#xf078;"
+                                   Style="{StaticResource searchUserDown}"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" 
+                            Style="{StaticResource searchUserFrameButton}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEyesDropDownCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       mvx:Bi.nd="Text [Eyes]"  
+                                       LineBreakMode="TailTruncation"
+                                       Style="{StaticResource welcomStyle_i16}"
+                                       Margin="10,0,0,0">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding UserFilter.EyesColor, Converter={StaticResource NullToBoolConverslyConverter}}" Value="True" >
+                                            <Setter Property="Text" Value="{Binding UserFilter.EyesColor}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                   Text="&#xf078;"
+                                   Style="{StaticResource searchUserDown}"/>
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" 
+                            Style="{StaticResource searchUserFrameButton}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenHairDropDownCommandAsync}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       mvx:Bi.nd="Text [Hair]"   
+                                       LineBreakMode="TailTruncation"
+                                       Style="{StaticResource welcomStyle_i16}"
+                                       Margin="10,0,0,0">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding UserFilter.HairColor, Converter={StaticResource NullToBoolConverslyConverter}}" Value="True" >
+                                            <Setter Property="Text" Value="{Binding UserFilter.HairColor}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                   Text="&#xf078;"
+                                   Style="{StaticResource searchUserDown}"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <customelements:GradientButton mvx:Bi.nd="Text [Apply]"
+                                               Margin="0,40,0,0"
+                                           Command="{Binding ApplyFilterCommandAsync}"
+                                           Style="{StaticResource gradientButtonSearchUser}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

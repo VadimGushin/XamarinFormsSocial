@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                          xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.Shared;assembly=XamarinSocial"
+                          x:TypeArguments="viewModels:SearchLocationViewModel"
+                          xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                          xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+                          xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                          x:Class="XamarinSocial.Views.Shared.SearchLocationView"
+                          HasNativeNavBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="500"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.05*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" 
+                  Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Column="0"
+                             BackgroundColor="Transparent"
+                             HeightRequest="25"
+                             Aspect="Fill"
+                             WidthRequest="25"
+                             VerticalOptions="Center" 
+                             HorizontalOptions="Center"
+                             Command="{Binding BackCommand}"
+                             Source ="cancel_button.png"/>
+                <Label Grid.Column="1" 
+                       Style="{StaticResource welcomStyle_i16}"
+                       mvx:Bi.nd="Text [LocationOnly]"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+                <ImageButton Grid.Column="2"
+                             HeightRequest="20"
+                             WidthRequest="25"
+                             Aspect="Fill"
+                             Command="{Binding AcceptClickedCommand}"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"
+                             Source="accept_button.png"/>
+            </Grid>
+            
+            <Frame Style="{StaticResource frameStyle_i1}"
+                   Grid.Column="1"
+                   Grid.Row="1">
+                <Frame.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0, 10, 0, 10"/>
+                </Frame.Padding>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToSearchLocationViewCommandAsync}"/>
+                </Frame.GestureRecognizers>
+                <customelements:CustomEntry
+                                Style="{StaticResource entryStyle_i1}"
+                                Placeholder=" find area"                            
+                                Text="{Binding SearchLocation}"/>
+
+            </Frame>
+            <ListView Grid.Column="1" 
+                      Grid.Row="2"
+                      ItemsSource="{Binding Places}"
+                      ItemSelected="ListView_ItemSelected"
+                      BackgroundColor="Transparent"
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Orientation="Horizontal"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="StartAndExpand"
+                                             Padding="10,0">
+                                    <Label Text="{Binding StructuredFormatting.MainText}"
+                                           Style="{StaticResource welcomStyle_i16}"
+                                           LineBreakMode="MiddleTruncation"/>
+                                    <Label LineBreakMode="MiddleTruncation"
+                                           Text="{Binding StructuredFormatting.SecondaryText}" 
+                                           Style="{StaticResource welcomStyle_i16}"/>
+                                </StackLayout>
+                                <ffimageloadingsvg:SvgCachedImage Grid.Column="1"
+                                                                  DownsampleToViewSize="True" 
+                                                                  Margin="5,5" 
+                                                                  Aspect="AspectFit"
+                                                                  Source="location_dot.svg"
+                                                                  HorizontalOptions="End"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

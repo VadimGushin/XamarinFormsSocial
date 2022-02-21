@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Shared.PostCellHeader"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ffiamgeloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:converters="clr-namespace:XamarinSocial.Converters">
+    <ContentView.Content>
+        <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,10,0,0">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <converters:PinnedLocationModelToStringConverter x:Key="PinnedLocationModelToStringConverter"/>
+                    <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+                    <converters:NullToBoolConverslyConverter x:Key="NullToBoolConverslyConverter"/>
+                </ResourceDictionary>
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ffiamgeloading:CachedImage
+                    Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                            RetryCount= "3"
+                            RetryDelay= "600"
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFit"
+                            Source="{Binding OwnerProfile.ProfileImageSource}"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                <ffiamgeloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation />
+                </ffiamgeloading:CachedImage.Transformations>
+            </ffiamgeloading:CachedImage>
+
+            <Label Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" 
+                       Text="{Binding OwnerProfile.FullName}"
+                       IsVisible="{Binding PinnedLocation, Converter={StaticResource NullToBoolConverslyConverter}}"
+                       Style="{StaticResource welcomStyle_i19}"
+                   VerticalOptions="Center"
+                   Margin="5,0,0,0"/>
+            <Label Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" 
+                       Text="{Binding PinnedLocation, Converter={StaticResource PinnedLocationModelToStringConverter}}"
+                       IsVisible="{Binding PinnedLocation, Converter={StaticResource NullToBoolConverslyConverter}}"
+                       Style="{StaticResource welcomStyle_i21}"
+                   VerticalOptions="Start"
+                   Margin="5,0,0,0"/>
+
+            <Label Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2"
+                       Text="{Binding OwnerProfile.FullName}"
+                       IsVisible="{Binding PinnedLocation, Converter={StaticResource NullToBoolConverter}}"
+                       VerticalOptions="Fill"
+                       VerticalTextAlignment="Center"
+                       Style="{StaticResource welcomStyle_i19_base}"
+                       Margin=" 5,0,0,0"/>
+
+            <Label x:Name="imgSettings" FontFamily="FontAwesome5Solid" Text="&#xf142;" TextColor="#5B6D86"  Grid.Column="5" Grid.Row="0" FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SettingsTapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

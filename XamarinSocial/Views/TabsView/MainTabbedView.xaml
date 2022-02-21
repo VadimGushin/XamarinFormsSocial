@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxTabbedPage xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" 
+                     xmlns="http://xamarin.com/schemas/2014/forms"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+                     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+                     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                     x:Class="XamarinSocial.Views.TabsView.MainTabbedView"
+                     x:TypeArguments="viewModels:MainTabbedViewModel"
+                     mc:Ignorable="d"
+                     NavigationPage.HasNavigationBar="false"
+                     android:TabbedPage.ToolbarPlacement="Bottom"
+                     android:TabbedPage.IsSwipePagingEnabled="False"
+                     Title="MainTabbedView">
+    <!--Pages can be added as references or inline-->
+
+    <views:MvxTabbedPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#9DD69F</Color>
+            <Color x:Key="Accent">#E1F4E0</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </views:MvxTabbedPage.Resources>
+    
+</views:MvxTabbedPage>

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Feed.CreatePostHorizontalImageList"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:effects="clr-namespace:XamarinSocial.Effects"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels;assembly=XamarinSocial">
+    <ContentView.Content>
+        <!--todo: move styles-->
+        <StackLayout Style="{StaticResource stackLayoutStyle_1}"
+                     Orientation="Horizontal" 
+                     HorizontalOptions="Fill">
+
+            <FlexLayout
+                 Wrap="NoWrap"
+                 Direction="Row"
+                 AlignItems="Center"
+                 AlignContent="Center"
+                 Margin="0"
+                 Padding="0"
+                 HorizontalOptions="Start">
+
+                <RelativeLayout Margin="0" 
+                                        Padding="0"
+                                        VerticalOptions="Fill">
+                    <Frame Style="{StaticResource addMediaFrameStyle}"
+                                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_4}}"
+                                       RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_4}}"
+                                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_5}}">
+                        <Frame.Effects>
+                            <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                        </Frame.Effects>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddContentTapGestureRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>
+
+                        <RelativeLayout Margin="0"
+                                                    Padding="0"
+                                                    VerticalOptions="Fill"
+                                                    HorizontalOptions="Fill"
+                                                    BackgroundColor="Transparent">
+                            <ffimageloadingsvg:SvgCachedImage
+                                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_6}}"
+                                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_6}}"
+                                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_7}}"
+                                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_7}}"
+                                                    DownsampleToViewSize="True"
+                                                    Aspect="AspectFit">
+                                <ffimageloadingsvg:SvgCachedImage.Source>
+                                    <OnPlatform x:TypeArguments="ImageSource"
+                                                            iOS="add.png" 
+                                                            Android="add.png">
+                                    </OnPlatform>
+                                </ffimageloadingsvg:SvgCachedImage.Source>
+                            </ffimageloadingsvg:SvgCachedImage>
+                        </RelativeLayout>
+
+                    </Frame>
+                </RelativeLayout>
+
+                <RelativeLayout         Margin="0" 
+                                        Padding="0"
+                                        VerticalOptions="Fill"
+                                        IsVisible="{Binding IsLocationPinned}">
+                    <Frame Style="{StaticResource addMediaFrameStyle}"
+                                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_4}}"
+                                       RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_4}}"
+                                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_5}}">
+                        <Frame.Effects>
+                            <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                        </Frame.Effects>
+
+                        <Grid RowSpacing="0" ColumnSpacing="0"
+                              VerticalOptions="Fill">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.1*"/>
+                                <RowDefinition Height="0.35*"/>
+                                <RowDefinition Height="0.275*"/>
+                                <RowDefinition Height="0.275*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.9*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ffimageloadingsvg:SvgCachedImage Grid.Row="1" Grid.Column="1"
+                                                    DownsampleToViewSize="True"
+                                                    Source="map_pin.svg"
+                                                    Aspect="AspectFit">
+                            </ffimageloadingsvg:SvgCachedImage>
+
+                            <Label Grid.Row="2" Grid.Column="1"
+                                    VerticalTextAlignment="End"
+                                    VerticalOptions="End"
+                                    HorizontalOptions="Fill"
+                                    Style="{StaticResource createPostLabelStyle_i1}"
+                                    Text="{Binding PinnedSecondLevelArea}">
+                            </Label>
+
+                            <Label Grid.Row="3" Grid.Column="1"
+                                    VerticalTextAlignment="Start"
+                                    HorizontalOptions="Fill"
+                                    Style="{StaticResource createPostLabelStyle_i1}"
+                                    Text="{Binding PinnedFirstLevelArea}">
+                            </Label>
+
+                        </Grid>
+                    </Frame>
+
+                    <!--<delete icon> increased recognizer-->
+                    <Frame  Padding="0"
+                                        Margin="0"
+                                        IsClippedToBounds="True"
+                                        BackgroundColor="Transparent"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_8}}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_8}}"
+                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_9}}"
+                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_6}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RemovePinnedLocationCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame              HasShadow="False"
+                                        Padding="0"
+                                        Margin="0"
+                                        IsClippedToBounds="True"
+                                        BackgroundColor="Transparent"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_7}}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_7}}"
+                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_9}}"
+                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_10}}">
+                        <ffimageloading:CachedImage
+                                                    BackgroundColor="Transparent"
+                                                    DownsampleToViewSize="True" 
+                                                    Margin="0" 
+                                                    Aspect="AspectFit"
+                                                    VerticalOptions="Fill"
+                                                    HorizontalOptions="Fill"
+                                                    Source="delete_icon_pink.png">
+                        </ffimageloading:CachedImage>
+
+                    </Frame>
+
+                </RelativeLayout>
+            </FlexLayout>
+
+            <ScrollView Orientation="Horizontal"
+                  VerticalOptions="Fill"
+                  HorizontalScrollBarVisibility="Never">
+                <FlexLayout
+                 BindableLayout.ItemsSource="{Binding Sources}"
+                 Wrap="NoWrap"
+                 Direction="Row"
+                 AlignItems="Center"
+                 AlignContent="Center"
+                 Margin="0"
+                 Padding="0">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <RelativeLayout Margin="0" 
+                                            Padding="0"
+                                            VerticalOptions="Fill">
+                                <Frame  Style="{StaticResource frameStyle_i3}"
+                                        VerticalOptions="Fill"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_4}}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_4}}"
+                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_5}}">
+                                    <Frame.Effects>
+                                        <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                                    </Frame.Effects>
+                                    <ffimageloading:CachedImage
+                                                    DownsampleToViewSize="True" 
+                                                    Margin="0" 
+                                                    Aspect="AspectFill"
+                                                    Source="{Binding ImageSource}"/>
+                                </Frame>
+
+                                <!--<delete icon> increased recognizer-->
+                                <Frame  Padding="0"
+                                        Margin="0"
+                                        IsClippedToBounds="True"
+                                        BackgroundColor="Transparent"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_8}}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_8}}"
+                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_9}}"
+                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_6}}">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CreatePostViewModel}}, Path=DeleteSourceCommandAsync}" CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+
+                                <Frame  HasShadow="False"
+                                        Padding="0"
+                                        Margin="0"
+                                        IsClippedToBounds="True"
+                                        BackgroundColor="Transparent"
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_7}}"
+                                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_7}}"
+                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_9}}"
+                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor={StaticResource factor_10}}">
+                                    <ffimageloading:CachedImage
+                                                    DownsampleToViewSize="True" 
+                                                    Margin="0" 
+                                                    Aspect="AspectFit"
+                                                    VerticalOptions="Fill"
+                                                    HorizontalOptions="Fill"
+                                                    Source="report_icon_filled.png">
+                                    </ffimageloading:CachedImage>
+
+                                </Frame>
+
+                            </RelativeLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

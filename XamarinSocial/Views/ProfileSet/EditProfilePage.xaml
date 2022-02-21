@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.ProfileSet;assembly=XamarinSocial"
+                           xmlns:customControls="clr-namespace:XamarinSocial.CustomElements"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.ProfileSet.EditProfilePage"
+                           x:TypeArguments="viewModels:EditProfileViewModel"
+                           xmlns:converters="clr-namespace:XamarinSocial.Converters"
+                           xmlns:ffiamgeloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+                           xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                           xmlns:localization="clr-namespace:XamarinSocial.Resources.Strings"
+                           xmlns:dltag="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.TagEntryView"
+                           HasNativeNavBar="False"      
+                           Title="EditProfile">
+
+    <ContentPage.Content>
+        
+        <ScrollView>
+
+            <ScrollView.Resources>
+                <ResourceDictionary>
+                    <converters:NullToBoolConverslyConverter x:Key="NullToBoolConverslyConverter"/>
+                    <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+                </ResourceDictionary>
+            </ScrollView.Resources>
+
+            <StackLayout Orientation="Vertical"
+                         Margin="10,10"
+                         Spacing="{StaticResource fsize_i12}">
+
+                <customControls:CustomNavigationBar BackgroundViewColor="Transparent"
+                                                    LeftImage="cancel_button.png"
+                                                    RightImage="accept_button.png"
+                                                    LeftButtonClickCommand="{mvx:MvxBind ClosePageCommand}"
+                                                    RightButtonClickCommand="{mvx:MvxBind EditProfileCommand}"
+                                                    mvx:Bi.nd="Title [EditProfile]"/>
+
+                <ffiamgeloading:CachedImage RetryCount= "3"
+                                            RetryDelay= "600"
+                                            HeightRequest="90"
+                                            DownsampleToViewSize="True"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding Profile.ProfileImageSource}">
+
+                    <ffiamgeloading:CachedImage.Transformations>
+                        
+                        <fftransformations:CircleTransformation BorderHexColor="{StaticResource str_color_1}"
+                                                                BorderSize="{StaticResource fsize_i12}"/>
+                        
+                    </ffiamgeloading:CachedImage.Transformations>
+
+                </ffiamgeloading:CachedImage>
+
+                <Button Style="{StaticResource ButtonStyle_i3}"
+                        mvx:Bi.nd="Text [ChangeAvatar]; 
+                        Command ChangeAvatarCommand"/>
+
+                <customControls:CustomBindableEntry ImageSource="img_user.svg"
+                                                    ErrorText="{x:Static localization:Strings.InvalidName}"
+                                                    Title="{x:Static localization:Strings.Name}"          
+                                                    BackgroundViewColor="{StaticResource tcolor_b5}"
+                                                    BorderViewColor="{StaticResource tcolor_b5}"
+                                                    MainValue="{Binding Profile.FirstName}"      
+                                                    ValidationPattern="{Binding NameValidationPattern}"/>
+
+                <customControls:CustomBindableEntry ImageSource="location_dot.svg"
+                                                    IsValueReadOnly="True"
+                                                    Title="{x:Static localization:Strings.LocationOnly}"          
+                                                    BackgroundViewColor="{StaticResource tcolor_b5}"
+                                                    BorderViewColor="{StaticResource tcolor_b5}"
+                                                    MainValue="{Binding Location}"
+                                                    mvx:Bi.nd="ClickCommand NavigateToSearchLocationViewCommand"/>
+
+                <customControls:CustomBindableEntry Title="{x:Static localization:Strings.AboutMe}"     
+                                                    BackgroundViewColor="{StaticResource tcolor_b5}"
+                                                    BorderViewColor="{StaticResource tcolor_b5}"
+                                                    MainValue="{Binding Profile.About}"
+                                                    IsTextOnly="True"/>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Label Style="{StaticResource customBindableControl_i1}"
+                           mvx:Bi.nd="Text [Interests]"/>
+
+                    <ImageButton Source="add.png"
+                                 Margin="0,3,0,0"
+                                 Style="{StaticResource addButtonStyle}"
+                                 mvx:Bi.nd="Command AddInterestsCommand"/>
+
+                </StackLayout>
+
+                <dltag:TagEntryView TagItems="{Binding Profile.Interests}"
+                                    ShowEntryBox="False"
+                                    Margin="0,10">
+
+                    <dltag:TagEntryView.TagItemTemplate>
+                        <DataTemplate>
+
+                            <Frame Style="{StaticResource tagsProfileFrameStyle}">
+
+                                <Label Text="{Binding .}"
+                                       Style="{StaticResource profileTagsStyle}"/>
+
+                            </Frame>
+
+                        </DataTemplate>
+                    </dltag:TagEntryView.TagItemTemplate>
+
+                </dltag:TagEntryView>
+
+                <StackLayout Orientation="Horizontal"
+                             Margin="0,5">
+
+                    <Image Source="img_album.png"
+                           Margin="5"/>
+
+                    <Label Style="{StaticResource customBindableControl_i1}"
+                           mvx:Bi.nd="Text [MyAlbum]"/>
+
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="EndAndExpand">
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenAlbumCommand}"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Label Style="{StaticResource welcomStyle_i21}"
+                               mvx:Bi.nd="Text ImageCountText"
+                               VerticalTextAlignment="Center"/>
+
+                        <Label Text="&#xf054;"
+                               Style="{StaticResource welcomStyle_i21}"
+                               FontSize="{StaticResource fsize_i24}"
+                               FontFamily="FontAwesome5Solid"/>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+                <Label Style="{StaticResource customBindableControl_i1}"
+                       mvx:Bi.nd="Text [PersonalDetails:]"/>
+
+                <customControls:CustomDropdownControl Title="{x:Static localization:Strings.Ethnicity}"
+                                                      SelectedItem="{Binding Profile.Ethnicity}"
+                                                      ItemsSourceType="Ethnicity"
+                                                      mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <customControls:CustomDropdownControl Grid.Column="0" 
+                                                          HorizontalOptions="CenterAndExpand"
+                                                          Title="{x:Static localization:Strings.MinHeight}"
+                                                          SelectedItem="{Binding Profile.MinHeight}"
+                                                          ItemsSourceType="MinHeight"
+                                                          mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+                    <customControls:CustomDropdownControl Grid.Column="1" 
+                                                          HorizontalOptions="CenterAndExpand"
+                                                          Title="{x:Static localization:Strings.MaxHeight}"
+                                                          SelectedItem="{Binding Profile.MaxHeight}"
+                                                          ItemsSourceType="MaxHeight"
+                                                          mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                </Grid>
+
+                <customControls:CustomDropdownControl Title="{x:Static localization:Strings.BodyType}"
+                                                      SelectedItem="{Binding Profile.BodyType}"
+                                                      ItemsSourceType="BodyType"
+                                                      mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <customControls:CustomDropdownControl Grid.Column="0"
+                                                          HorizontalOptions="CenterAndExpand"
+                                                          Title="{x:Static localization:Strings.Eyes}"
+                                                          SelectedItem="{Binding Profile.EyesColor}"
+                                                          ItemsSourceType="EyesColor"
+                                                          mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                    <customControls:CustomDropdownControl Grid.Column="1"
+                                                          HorizontalOptions="CenterAndExpand"
+                                                          Title="{x:Static localization:Strings.Hair}"
+                                                          SelectedItem="{Binding Profile.HairColor}"
+                                                          ItemsSourceType="HairColor"
+                                                          mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                </Grid>
+
+                <customControls:CustomDropdownControl Title="{x:Static localization:Strings.SexualOrientation}"
+                                                      SelectedItem="{Binding Profile.SexualOrientation}"
+                                                      ItemsSourceType="SexualOrientation"
+                                                      mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                <customControls:CustomDropdownControl Title="{x:Static localization:Strings.Religion}"
+                                                      SelectedItem="{Binding Profile.Religion}"
+                                                      ItemsSourceType="Religion"
+                                                      mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <customControls:CustomDropdownControl Grid.Column="0" 
+                                                          HorizontalOptions="CenterAndExpand"
+                                                          Title="{x:Static localization:Strings.Smocking}"
+                                                          SelectedItem="{Binding Profile.Smocking}"
+                                                          ItemsSourceType="Smocking"
+                                                          mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                    <customControls:CustomDropdownControl Grid.Column="1" 
+                                                          HorizontalOptions="CenterAndExpand"
+                                                          Title="{x:Static localization:Strings.Drinking}"
+                                                          SelectedItem="{Binding Profile.Drinking}"
+                                                          ItemsSourceType="Drinking"
+                                                          mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                </Grid>
+
+                <customControls:CustomDropdownControl Title="{x:Static localization:Strings.Kids}"
+                                                      SelectedItem="{Binding Profile.Kids}"
+                                                      ItemsSourceType="Kids"
+                                                      mvx:Bi.nd="SelectedCommand SelectedDropdownItemCommand"/>
+
+                <BoxView BackgroundColor="Transparent"
+                         HeightRequest="10"/>
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage>

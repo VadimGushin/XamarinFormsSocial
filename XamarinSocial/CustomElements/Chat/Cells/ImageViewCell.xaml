@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="XamarinSocial.CustomElements.Chat.Cells.ImageViewCell"
+          xmlns:effects="clr-namespace:XamarinSocial.Effects;assembly=XamarinSocial"
+          xmlns:ffiamgeloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <StackLayout Padding="0,7"
+                 Orientation="Vertical">
+
+        <Label Style="{StaticResource chatConversationLabelStyle_i1}"
+               Text="{Binding TopDateString}"
+               IsVisible="{Binding HasTopDate}"/>
+
+        <ffiamgeloading:CachedImage effects:RoundCornersEffect.CornerRadius="20"
+                                    Source="{Binding ImageSource}"
+                                    RetryCount= "3"
+                                    RetryDelay= "600"
+                                    HeightRequest="150"
+                                    HorizontalOptions="End"
+                                    DownsampleToViewSize="True"  
+                                    Aspect="AspectFit">
+
+            <ffiamgeloading:CachedImage.Triggers>
+                
+                <DataTrigger TargetType="ffiamgeloading:CachedImage" 
+                             Binding="{Binding IsOwn}" Value="True">
+                    
+                    <Setter Property="HorizontalOptions"
+                            Value="Start"/>
+                    
+                </DataTrigger>
+                
+            </ffiamgeloading:CachedImage.Triggers>
+
+        </ffiamgeloading:CachedImage>
+
+    </StackLayout>
+
+</ViewCell>

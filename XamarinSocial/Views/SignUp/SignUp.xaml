@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.SignUp;assembly=XamarinSocial"
+             xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+             x:TypeArguments="viewModels:SignUpViewModel"
+             x:Class="XamarinSocial.Views.SignUp.SignUp"
+             HasNativeNavBar="False"      
+             Title="Sign Up"
+             BackgroundImageSource="sign_up.png">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="0.4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.05*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="1"  Grid.Column="1"
+                   mvx:Bi.nd="Text [GettingStarted]"
+                   Style="{StaticResource welcomStyle_i1}"/>
+            <Label Grid.Row="2"  Grid.Column="1" 
+                   Style="{StaticResource welcomStyle_i2}"
+                   TextColor="#FFFFFF">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span mvx:Bi.nd="Text [SigningUpOrLoginToMeet]"/>
+                        <Span Text="{x:Static x:Environment.NewLine}" />
+                        <Span mvx:Bi.nd="Text [NewFriends]"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Frame Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="10"
+                   BackgroundColor="White" 
+                   CornerRadius="13" />
+            <Label Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="3"
+                   mvx:Bi.nd="Text [EnterYourPhoneNumber]" 
+                   Style="{StaticResource welcomStyle_i3}"/>
+            <Label Grid.Row="5"  Grid.Column="1" 
+                  Style="{StaticResource welcomStyle_i4}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span mvx:Bi.nd="Text [SigningUpOrLoginToMeet]"/>
+                        <Span Text="{x:Static x:Environment.NewLine}" />
+                        <Span mvx:Bi.nd="Text [NewFriends]"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Grid.Row="6"  Grid.Column="1"  
+                   mvx:Bi.nd="Text [PhoneNumber]" 
+                   Style="{StaticResource welcomStyle_i5}"/>
+            <Frame Grid.Row="7"  Grid.Column="1"  
+                   Style="{StaticResource frameStyle_i1}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.40*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" 
+                           Style="{StaticResource welcomStyle_i7}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToCountryCodeCommandAsync}"/>
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding CountryCode}" 
+                                          FontFamily="SFProTextRegular" 
+                                          FontSize="19">
+                                    </Span>
+                                    <Span Text=" &#xf078;"
+                                          FontFamily="FontAwesome5Solid">
+                                    </Span>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <customelements:CustomEntry Grid.Column="1"
+                                                Style="{StaticResource entryStyle_i1}"
+                                                Placeholder="1234567"
+                                                Keyboard="Telephone"
+                                                mvx:Bi.nd="Text PhoneNumber">
+                        <customelements:CustomEntry.Triggers>
+                            <DataTrigger TargetType="customelements:CustomEntry" Binding="{Binding IsValidPhoneNumber}" Value="false">
+                                <Setter Property="TextColor" Value="Red" />
+                            </DataTrigger>
+                        </customelements:CustomEntry.Triggers>
+                    </customelements:CustomEntry>
+                </Grid>
+            </Frame>
+            <Grid Grid.Row="8" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Orientation="Horizontal">
+                    <RadioButton GroupName="CheckMethod"
+                                 Style="{StaticResource radioButtonStyle_i1}"
+                                 IsChecked="{Binding IsVerifyBySMS}"/>
+                    <Label mvx:Bi.nd="Text [VerifyBySMS]" 
+                           Style="{StaticResource labelForRadiobutton}" />
+                </StackLayout>
+                <StackLayout Grid.Column="1" Orientation="Horizontal">
+                    <RadioButton GroupName="CheckMethod"
+                                 Style="{StaticResource radioButtonStyle_i1}"
+                                 IsChecked="{Binding IsVerifyByPhoneCall}" />
+                    <Label mvx:Bi.nd="Text [VerifyByPhoneCall]"  
+                           Style="{StaticResource labelForRadiobutton}" />
+                </StackLayout>
+            </Grid>
+            <customelements:GradientButton Grid.Row="9" Grid.Column="1" 
+                                           mvx:Bi.nd="Text [GetStarted]"           
+                                           Command="{Binding GetStartedCommandAsync}"
+                                           IsEnabled="{Binding IsValidPhoneNumber}"
+                                           Style="{StaticResource gradientButtonStyle_i1}">
+                <customelements:GradientButton.Triggers>
+                    <DataTrigger TargetType="customelements:GradientButton" Binding="{Binding IsValidPhoneNumber}" Value="false">
+                        <Setter Property="TextColor" Value="#002244"/>
+                        <Setter Property="StartColor" Value="LightGray"/>
+                        <Setter Property="EndColor" Value="Gray"/>
+                    </DataTrigger>
+                   </customelements:GradientButton.Triggers>
+            </customelements:GradientButton>
+            <Button Grid.Row="10" Grid.Column="1"
+                    x:Name="ForgetPasswordButton"                   
+                    Style="{StaticResource ButtonStyle_i2}"
+                    mvx:Bi.nd="Text [ForgetPassword]; Command ResetPasswordCommandAsync"/>
+            <BoxView Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" 
+                     BackgroundColor="White"/>
+            <Label Grid.Row="11" Grid.Column="1"
+                   mvx:Bi.nd="Text [OrSignInWith]"
+                   Style="{StaticResource welcomStyle_i6}"/>
+            <Grid Grid.Row="12" Grid.Column="1"
+                  HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Column="0" 
+                             Style="{StaticResource ImageButtonStyle_i1}"
+                             Command="{mvx:MvxBind EmailSignInCommandAsync}"
+                             Source="email_icon.png"/>
+                <ImageButton Grid.Column="1" 
+                             Style="{StaticResource ImageButtonStyle_i1}" 
+                             Command="{mvx:MvxBind FacebookSignInCommandAsync}"
+                             Source="facebook_icon.png"/>
+                <ImageButton Grid.Column="2" 
+                             Style="{StaticResource ImageButtonStyle_i1}" 
+                             Command="{mvx:MvxBind GoogleSignInCommandAsync}"
+                             Source="google_icon.png"/>
+                <ImageButton Grid.Column="3" 
+                             Style="{StaticResource ImageButtonStyle_i1}" 
+                             Command="{mvx:MvxBind AppleSignInCommandAsync}"
+                             Source="apple_icon.png"/>
+            </Grid>
+        </Grid>          
+    </ContentPage.Content>
+</baseView:BaseContentPage>

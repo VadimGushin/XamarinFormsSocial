@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{871E798C-9D0A-46AB-916F-DBCA7141B499}|Default">
+  <MonoDevelop.Ide.ItemProperties.XamarinSocial.Droid PreferredExecutionTarget="Android.5.4_FWVGA_API_28" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="XamarinSocial" expanded="True" selected="True">
+            <Node name="XamarinSocial.Droid" expanded="True" />
+            <Node name="XamarinSocial.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

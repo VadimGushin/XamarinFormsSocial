@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="XamarinSocial.Views.Shared.DropdownPopapView"
+                 xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                 xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+                 CloseWhenBackgroundIsClicked="True"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <RelativeLayout>
+
+        <Grid x:Name="gridView"
+              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+              VerticalOptions="FillAndExpand"
+              BackgroundColor="Transparent">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+
+            <BoxView Grid.Row="0"
+                     x:Name="spaceView"
+                     BackgroundColor="Transparent">
+
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFreeScapeClicked"/>
+                    <!--Native logic don't work with Grid-->
+                </BoxView.GestureRecognizers>
+
+            </BoxView>
+
+            <Frame Grid.Row="1"
+                   x:Name="mainContent"
+                   CornerRadius="14"
+                   BackgroundColor="White"
+                   HasShadow="True"
+                   Margin="10">
+
+                <ListView x:Name="list"
+                          ItemsSource="{Binding CurrentDropDownList}"
+                          ItemSelected="ListView_ItemSelected"
+                          HasUnevenRows="True"
+                          SeparatorVisibility="None">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <ViewCell>
+
+                                <Label Text="{Binding .}" 
+                                       Style="{StaticResource searchUserDropDownItem}"/>
+
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+            </Frame>
+
+            <customelements:GradientButton Grid.Row="2"
+                                       x:Name="bottomButton"
+                                       mvx:Bi.nd="Text [Cancel]"
+                                       Clicked="GradientButton_Clicked"
+                                       Style="{StaticResource gradientButtonSearchUser}"/>
+        </Grid>
+
+        <ScrollView x:Name="bindableLayoutContainer"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                    BackgroundColor="Transparent"
+                    IsVisible="False">
+
+            <StackLayout Orientation="Vertical">
+
+                <BoxView VerticalOptions="FillAndExpand"
+                         Color="Transparent">
+
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFreeScapeClicked"/>
+                    </BoxView.GestureRecognizers>
+
+                </BoxView>
+
+                <Frame CornerRadius="14"
+                       VerticalOptions="End"
+                       BackgroundColor="White"
+                       HasShadow="False"
+                       Margin="10">
+
+                    <StackLayout x:Name="bindableLayout"
+                                 Padding="10">
+
+                        <BindableLayout.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label Text="{Binding ImageSource}"
+                                           TextColor="{Binding Color}"
+                                           FontSize="{StaticResource fsize_i17}"
+                                           FontFamily="FontAwesome5Solid"
+                                           Margin="5,0"/>
+
+                                    <Label Text="{Binding Text}"
+                                           TextColor="{Binding Color}"
+                                           FontSize="{StaticResource fsize_i17}"
+                                           FontFamily="SFProTextRegular"/>
+
+                                    <StackLayout.GestureRecognizers>
+
+                                        <TapGestureRecognizer Tapped="OnCollectionItemTapped"
+                                                              CommandParameter="{Binding Id}"/>
+
+                                    </StackLayout.GestureRecognizers>
+
+                                </StackLayout>
+
+
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+                </Frame>
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</pages:PopupPage>

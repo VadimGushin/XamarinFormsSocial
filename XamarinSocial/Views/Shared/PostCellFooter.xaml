@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Shared.PostCellFooter"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:resx="clr-namespace:XamarinSocial.Resources.Strings"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:converters="clr-namespace:XamarinSocial.Converters"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial">
+    <ContentView.Resources>
+        <converters:StringIsNullOrEmptyToBoolConverslyConverter x:Key="StringIsNullOrEmptyToBoolConverslyConverter"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <!--bottom Controls-->
+        <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ffimageloadingsvg:SvgCachedImage
+                            Grid.Column="0"
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFit">
+                    <ffimageloadingsvg:SvgCachedImage.Triggers>
+                        <DataTrigger TargetType="ffimageloadingsvg:SvgCachedImage" Binding="{Binding CurrentUserMark}" Value="1">
+                            <Setter Property="Source">
+                                <OnPlatform x:TypeArguments="ImageSource" 
+                                iOS="like_post.png" 
+                                Android="like.svg">
+                                </OnPlatform>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="ffimageloadingsvg:SvgCachedImage" Binding="{Binding CurrentUserMark}" Value="2">
+                            <Setter Property="Source">
+                                <OnPlatform x:TypeArguments="ImageSource" 
+                                iOS="like_post_filled.png" 
+                                Android="like_filled.svg">
+                                </OnPlatform>
+                            </Setter>
+                        </DataTrigger>
+                    </ffimageloadingsvg:SvgCachedImage.Triggers>
+                </ffimageloadingsvg:SvgCachedImage>
+
+                <Label Grid.Column="1" 
+                       x:Name="lblLike"
+                       VerticalTextAlignment="Center"
+                       VerticalOptions="Fill"
+                       Style="{StaticResource welcomStyle_i20}">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding CurrentUserMark}" Value="1">
+                            <Setter Property="Text" Value="{x:Static resx:Strings.Like}"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label" Binding="{Binding CurrentUserMark}" Value="2">
+                            <Setter Property="Text" Value="{x:Static resx:Strings.Liked}"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+
+                <!--handle 'like' click -->
+                <ContentView Grid.Column="0"  Grid.ColumnSpan="2"
+                             Margin="0"
+                             Padding="0"
+                             BackgroundColor="Transparent">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=LikePostCommandAsync}"
+                                              CommandParameter="{Binding .}"/>
+                    </ContentView.GestureRecognizers>
+                </ContentView>
+
+
+                <ffimageloadingsvg:SvgCachedImage
+                            Grid.Column="2" 
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFit">
+                    <ffimageloadingsvg:SvgCachedImage.Source>
+                        <OnPlatform x:TypeArguments="ImageSource" 
+                                iOS="comments.png" 
+                                Android="comments.svg">
+                        </OnPlatform>
+                    </ffimageloadingsvg:SvgCachedImage.Source>
+                </ffimageloadingsvg:SvgCachedImage>
+
+                <Label Grid.Column="3" 
+                       x:Name="lblComment"
+                       Style="{StaticResource welcomStyle_i20}"/>
+
+                <!--handle 'comment' click -->
+                <ContentView Grid.Column="2" Grid.ColumnSpan="2"
+                             Margin="0"
+                             Padding="0"
+                             BackgroundColor="Transparent">
+                    <ContentView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=CommentPostCommandAsync}"
+                                              CommandParameter="{Binding .}"/>
+                    </ContentView.GestureRecognizers>
+                </ContentView>
+
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,817 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+                     xmlns:range_slider="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+                    x:Class="XamarinSocial.Styles.CustomStyles">
+
+    <!-- BACKGROUND COLORS -->
+    <Color x:Key="tcolor_b1">#010845</Color>                    <!--     Dark blue      -->
+    <Color x:Key="tcolor_b2">#0084F4</Color>                    <!--       Blue         -->    
+    <Color x:Key="tcolor_b3">#e4e4e4</Color>                    <!--    Middle gray     -->    
+    <Color x:Key="tcolor_b4">#F5F5FB</Color>                    <!--    Light gray      -->    
+    <Color x:Key="tcolor_b5">#D5E6F4</Color>                    <!--  Ultra light Blue  -->    
+    <Color x:Key="tcolor_b6">#FC6D6D</Color>                    <!--     Light Red      -->    
+    <Color x:Key="tcolor_b7">#FFFFFF</Color>                    <!--       White        -->    
+    <Color x:Key="tcolor_b8">#2BBEF2</Color>                    <!-- Middle light Blue  -->    
+    <Color x:Key="tcolor_b9">#003CFF</Color>                    <!--    Dark Blue       -->    
+    <Color x:Key="tcolor_b10">#D5E6F4</Color>                   <!--  Ultra Light Blue  -->   
+    <Color x:Key="tcolor_b11">#002244</Color>                   <!-- Dark Blue theme #3 -->
+    <Color x:Key="tcolor_b12">#00D90E</Color>                   <!--       Green        -->
+    <Color x:Key="tcolor_pink">#FFB2EA</Color>                  <!--        Pink        -->
+    <Color x:Key="user_search_bg_color">#CDEBFF</Color>         <!--     light Blue     -->
+    <Color x:Key="user_search_button_bg">#FFC100</Color>        <!--       Yellow       -->
+    <Color x:Key="add_media_control_bg_color">#F2F6F9</Color>   <!--Light gray  theme # -->
+    <Color x:Key="feed_list_spacing_bg_color">#ebf6ff</Color>   <!--Ultra Light Blue theme #2 -->
+    <Color x:Key="user_search_badge_bg">#FFC043</Color>         <!--       Yellow       -->
+    <Color x:Key="user_search_badge_pink_bg">#FFB3EA</Color>    <!--    Light Pink      -->
+    <Color x:Key="badge_color_i1">#FF647C</Color>               <!--  Badge red color   -->
+    <Color x:Key="badge_color_i2">#EB3AA7</Color>               <!--  Badge pink color  -->
+    <Color x:Key="hex_transparent">#00FFFFFF</Color>            <!--  Hex transparent   -->
+
+    <!-- FONT COLORS -->
+    <Color x:Key="fcolor_b1">#002244</Color>                <!--   Font Dark blue   -->
+    <Color x:Key="fcolor_b2">#999999</Color>                <!--   Font Middle gray -->
+    <Color x:Key="fcolor_b3">#0084F4</Color>                <!--     Font Blue      -->
+    <Color x:Key="fcolor_b4">#F42525</Color>                <!--      Font Red      -->
+    <Color x:Key="fcolor_b5">#FFFFFF</Color>                <!--    Font White      -->
+    <Color x:Key="fcolor_b6">#5B6D86</Color>                <!--     Dark Gray      -->
+    <Color x:Key="fcolor_b7">#1D2B34</Color>                <!--   Dark Green Gray  -->
+    <Color x:Key="fcolor_b8">#FF1313</Color>                <!--  Ultra Light Red   -->
+    <Color x:Key="fcolor_b9">#000000</Color>                <!--        Black       -->
+    <Color x:Key="fcolor_custom_tab_line">#D5E6F4</Color>   <!--  Ultra Light Gray  -->
+    <Color x:Key="fcolor_green_line">#27AE60</Color>        <!--       Green        -->
+    <Color x:Key="fcolor_b10">#151522</Color>               <!--    Middle Black    -->
+
+    <!-- FONT SIZES -->
+    <x:Double x:Key="fsize_i9">9</x:Double>
+    <x:Double x:Key="fsize_i10">10</x:Double>
+    <x:Double x:Key="fsize_i12">12</x:Double>
+    <x:Double x:Key="fsize_i13">13</x:Double>
+    <x:Double x:Key="fsize_i14">14</x:Double>
+    <x:Double x:Key="fsize_i15">15</x:Double>
+    <x:Double x:Key="fsize_i16">16</x:Double>
+    <x:Double x:Key="fsize_i17">17</x:Double>
+    <x:Double x:Key="fsize_i18">18</x:Double>
+    <x:Double x:Key="fsize_i19">19</x:Double>
+    <x:Double x:Key="fsize_i20">20</x:Double>
+    <x:Double x:Key="fsize_i22">22</x:Double>
+    <x:Double x:Key="fsize_i24">24</x:Double>
+    <x:Double x:Key="fsize_i25">25</x:Double>
+    <x:Double x:Key="fsize_i28">28</x:Double>
+    <x:Double x:Key="fsize_i30">30</x:Double>
+    <x:Double x:Key="fsize_i34">34</x:Double>
+    <x:Double x:Key="fsize_i40">40</x:Double>
+
+    <!--LINE HEIGHT COEFFICIENTS-->
+    <x:Double x:Key="lheight_c1">1.5</x:Double>
+    <x:Double x:Key="lheight_c2">1.4</x:Double>
+    <x:Double x:Key="lheight_c3">1.25</x:Double>
+
+    <!--OPACITY COEFFICIENTS-->
+    <x:Double x:Key="opacity_06">0.6</x:Double>
+
+    <!--FACTOR COEFFICIENTS-->
+    <x:Double x:Key="factor_1">0.5714</x:Double>
+    <x:Double x:Key="factor_2">0.04</x:Double>
+    <x:Double x:Key="factor_3">0.235</x:Double>
+    <x:Double x:Key="factor_4">0.9</x:Double>
+    <x:Double x:Key="factor_5">0.05</x:Double>
+    <x:Double x:Key="factor_6">0.6</x:Double>
+    <x:Double x:Key="factor_7">0.2</x:Double>
+    <x:Double x:Key="factor_8">0.35</x:Double>
+    <x:Double x:Key="factor_9">0.025</x:Double>
+    <x:Double x:Key="factor_10">0.75</x:Double>
+
+
+    <!--CORNER RADIUS COEFFICIENTS-->
+    <x:Int32 x:Key="radius_1">10</x:Int32>
+    <x:Int32 x:Key="frameCornerRadius">25</x:Int32>
+    <x:Int32 x:Key="frameCornerRadiusSearchUserBadge">10</x:Int32>
+    <x:Int32 x:Key="boxViewCornerCustomTabs">4</x:Int32>
+    <x:Int32 x:Key="tagsFrameRadius">15</x:Int32>
+    
+    <!--STRINGS-->
+    <x:String x:Key="str_color_1">99dcdcdc</x:String>    <!--    Middle Gray Alpha_60%    -->
+
+    <!-- LABEL STYLES -->
+    <Style x:Key="welcomStyle_i1" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i28}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b5}"/>
+        <Setter Property="FontFamily"              Value="SFProDisplayBold"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i2" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b5}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i3" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i28}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"              Value="SFProDisplayBold"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i4" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b2}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i5" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i6" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i15}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b2}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i7" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i8" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b3}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i19}"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i9" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i34}"/>
+        <Setter Property="FontFamily"              Value="SFProDisplayBold"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i10" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i11" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="FillAndExpand"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="FontFamily"              Value="SFProDisplayBold"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i12" TargetType="Label">
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b3}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i19}"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i13" TargetType="Label">
+        <Setter Property="TextColor"                Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"          Value="Transparent"/>
+        <Setter Property="FontSize"                 Value="{StaticResource fsize_i15}"/>
+        <Setter Property="VerticalOptions"          Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions"        Value="Center"/>
+        <Setter Property="HorizontalTextAlignment"  Value="Center"/>
+        <Setter Property="FontFamily"               Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i14" TargetType="Label">
+        <Setter Property="TextColor"                Value="{StaticResource fcolor_b4}"/>
+        <Setter Property="BackgroundColor"          Value="Transparent"/>
+        <Setter Property="FontSize"                 Value="{StaticResource fsize_i13}"/>
+        <Setter Property="VerticalOptions"          Value="Center"/>
+        <Setter Property="HorizontalOptions"        Value="Start"/>
+        <Setter Property="HorizontalTextAlignment"  Value="Start"/>
+        <Setter Property="FontFamily"               Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i15" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i34}"/>
+        <Setter Property="FontFamily"              Value="SFProDisplayBold"/>
+    </Style>
+
+    <Style x:Key="welcomStyle_i16" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+
+    <Style x:Key="customBindableControl_i1" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"              Value="SFProDisplayBold"/>
+        <Setter Property="Margin"                  Value="5,0,0,0"/>
+    </Style>
+
+    <!--empty feed-->
+    <Style x:Key="welcomStyle_i17" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i28}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+    <Style x:Key="welcomStyle_i18" TargetType="Label">
+        <Setter Property="TextColor"                Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="BackgroundColor"          Value="Transparent"/>
+        <Setter Property="FontSize"                 Value="{StaticResource fsize_i16}"/>
+        <Setter Property="VerticalOptions"          Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions"        Value="Center"/>
+        <Setter Property="HorizontalTextAlignment"  Value="Center"/>
+        <Setter Property="FontFamily"               Value="SFProTextRegular"/>
+    </Style>
+
+    <!--feed list-->
+    <Style x:Key="welcomStyle_i19_base" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i16}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+    <Style x:Key="welcomStyle_i19" TargetType="Label"
+           BasedOn="{StaticResource welcomStyle_i19_base}">
+        <Setter Property="LineHeight"              Value="{StaticResource lheight_c3}"/>
+    </Style>
+    <Style x:Key="welcomStyle_i20" TargetType="Label">
+        <Setter Property="VerticalOptions"   Value="Fill"/>
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i14}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+    <Style x:Key="welcomStyle_i21" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="End"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i13}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+        <Setter Property="LineHeight"              Value="{StaticResource lheight_c2}"/>
+    </Style>
+    <Style x:Key="welcomStyle_i22" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i24}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b5}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+    <Style x:Key="welcomStyle_i23" TargetType="Label"  BasedOn="{StaticResource welcomStyle_i19}">
+        <Setter Property="MaxLines"                Value="2"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+        <Setter Property="LineBreakMode"           Value="TailTruncation"/>
+    </Style>
+
+    <!--context menu-->
+    <Style x:Key="welcomStyle_i24" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+        <Style x:Key="welcomStyle_i25" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b8}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <!--create post-->
+    <Style x:Key="welcomStyle_i26" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="FillAndExpand"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i18}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+    <Style x:Key="user_search_city" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalTextAlignment"   Value="Start"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i13}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+    
+    <!--search User-->
+    <Style x:Key="searchUserDown" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i16}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"              Value="FontAwesome5Solid"/>
+        <Setter Property="Margin"                  Value="0,0,10,0"/>
+        <Setter Property="Padding"                 Value="0"/>
+    </Style>
+
+    <Style x:Key="searchUserDropDownItem" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalOptions"        Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+        <Setter Property="Margin"                  Value="0,10"/>
+    </Style>
+
+    <Style x:Key="createPostLabelStyle_i1" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Start"/>
+        <Setter Property="VerticalOptions"         Value="StartAndExpand"/>
+        <Setter Property="HorizontalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalOptions"         Value="Center"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i12}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+        <Setter Property="MaxLines"                Value="1"/>
+        <Setter Property="LineBreakMode"           Value="TailTruncation"/>
+    </Style>
+
+    <Style x:Key="profileLabelStyle_i1" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i20}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+        <Setter Property="MaxLines"                Value="1"/>
+        <Setter Property="LineBreakMode"           Value="TailTruncation"/>
+    </Style>
+
+    <Style x:Key="profileLabelStyle_i2" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i14}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+        <Setter Property="MaxLines"                Value="1"/>
+        <Setter Property="LineBreakMode"           Value="TailTruncation"/>
+    </Style>
+
+    <Style x:Key="profileLabelStyle_i3" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i14}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="profileLabelStyle_i4" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i14}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+
+    <Style x:Key="chatConversationLabelStyle_i1"   TargetType="Label">
+        <Setter Property="VerticalOptions"         Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i13}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+        <Setter Property="Margin"                  Value="0,10"/>
+    </Style>
+
+    <Style x:Key="chatConversationLabelStyle_i2"   TargetType="Label">
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_custom_tab_line}"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i10}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+        <Setter Property="MinimumWidthRequest"     Value="50"/>
+        <Setter Property="VerticalTextAlignment"   Value="End"/>
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+    </Style>
+
+    <Style x:Key="chatConversationLabelStyle_i3"   TargetType="Label">
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b5}"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i13}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+        <Setter Property="VerticalTextAlignment"   Value="Start"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+    </Style>
+
+    <!--select location-->
+    <Style x:Key="selectLocationStyle_i1" TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="VerticalOptions"         Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions"       Value="StartAndExpand"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b9}"/>
+        <Setter Property="BackgroundColor"         Value="Transparent"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+        <Setter Property="MaxLines"                Value="1"/>
+        <Setter Property="LineBreakMode"           Value="TailTruncation"/>
+    </Style>
+
+    <Style x:Key="searchUserItemCustomBadge"       TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i10}"/>
+        <Setter Property="TextColor"               Value="{StaticResource tcolor_b7}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+        <Setter Property="Margin"                  Value="15,0"/>
+    </Style>
+
+    <Style x:Key="searchUserLocation"       TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="HorizontalOptions"       Value="Start"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i15}"/>
+        <Setter Property="TextColor"               Value="{StaticResource tcolor_b11}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+    
+    <!--user Profile-->
+    <Style x:Key="profileTagsStyle"                TargetType="Label">
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalOptions"       Value="Center"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i12}"/>
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b5}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+
+    <Style x:Key="profileFeedDescriptionStyle"     TargetType="Label">
+        <Setter Property="TextColor"               Value="{StaticResource tcolor_b11}"/>
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="MaxLines"                Value="2"/>
+        <Setter Property="LineBreakMode"           Value="TailTruncation"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i16}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+    </Style>
+
+    <Style x:Key="profileFeedDateStyle"            TargetType="Label">
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i13}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <Style x:Key="profileFeedCountersStyle"        TargetType="Label">
+        <Setter Property="TextColor"               Value="{StaticResource tcolor_b11}"/>
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i10}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+
+    <!--settings-->
+
+    <Style x:Key="settings_i1"        TargetType="Label">
+        <Setter Property="TextColor"               Value="{StaticResource fcolor_b3}"/>
+        <Setter Property="VerticalTextAlignment"   Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i17}"/>
+        <Setter Property="FontFamily"              Value="SFProTextMedium"/>
+        <Setter Property="Padding"                 Value="15,0"/>
+    </Style>
+
+    <!-- FRAME STYLES -->
+    <Style x:Key="frameStyle_i1" TargetType="Frame">
+        <Setter Property="BackgroundColor"   Value="{StaticResource tcolor_b4}"/>
+        <Setter Property="CornerRadius"      Value="6"/>
+        <Setter Property="BorderColor"       Value="{StaticResource tcolor_b3}"/>
+        <Setter Property="Padding"           Value="5, 0"/>
+        <Setter Property="HasShadow"         Value="False"/>
+    </Style>
+
+    <Style x:Key="frameStyle_i2" TargetType="Frame">
+        <Setter Property="BackgroundColor"   Value="{StaticResource tcolor_b5}"/>
+        <Setter Property="CornerRadius"      Value="6"/>
+        <Setter Property="BorderColor"       Value="{StaticResource tcolor_b3}"/>
+        <Setter Property="Padding"           Value="5"/>
+        <Setter Property="VerticalOptions"   Value="Center"/>
+        <Setter Property="HasShadow"         Value="False"/>
+    </Style>
+
+    <Style x:Key="frameStyle_i3_base" TargetType="Frame">
+        <Setter Property="IsClippedToBounds"    Value="True"/>
+        <Setter Property="Padding"              Value="0"/>
+        <Setter Property="Margin"               Value="0"/>
+        <Setter Property="HasShadow"            Value="False"/>
+        <Setter Property="BackgroundColor"      Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="frameStyle_i3" TargetType="Frame"
+           BasedOn="{StaticResource frameStyle_i3_base}">
+        <Setter Property="CornerRadius"         Value="{StaticResource radius_1}"/>
+    </Style>
+
+    <Style x:Key="searchUserFrameButton" TargetType="Frame">
+        <Setter Property="Padding"              Value="10, 15"/>
+        <Setter Property="HasShadow"            Value="False"/>
+        <Setter Property="BackgroundColor"      Value="Transparent"/>
+        <Setter Property="CornerRadius"         Value="{StaticResource frameCornerRadius}"/>
+        <Setter Property="BorderColor"          Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="VerticalOptions"      Value="Center"/>
+    </Style>
+    <Style x:Key="searchUserBadge" TargetType="Frame">
+        <Setter Property="Padding"              Value="0"/>
+        <Setter Property="HasShadow"            Value="False"/>
+        <Setter Property="CornerRadius"         Value="{StaticResource frameCornerRadiusSearchUserBadge}"/>
+    </Style>
+
+    <Style x:Key="addMediaFrameStyle" TargetType="Frame"
+           BasedOn="{StaticResource frameStyle_i3}">
+        <Setter Property="CornerRadius"         Value="{StaticResource radius_1}"/>
+        <Setter Property="BackgroundColor"      Value="{StaticResource add_media_control_bg_color}"/>
+        <Setter Property="VerticalOptions"      Value="Fill"/>
+    </Style> 
+    
+    <Style x:Key="tagsProfileFrameStyle" TargetType="Frame">
+        <Setter Property="CornerRadius"         Value="{StaticResource tagsFrameRadius}"/>
+        <Setter Property="BackgroundColor"      Value="{StaticResource tcolor_pink}"/>
+        <Setter Property="VerticalOptions"      Value="Center"/>
+        <Setter Property="OutlineColor"         Value="Transparent"/>
+        <Setter Property="HasShadow"            Value="False"/>
+        <Setter Property="Padding"              Value="20,7"/>
+    </Style>
+
+
+    <!-- ENTRY STYLES -->
+    <Style x:Key="entryStyle_i1" TargetType="Entry">
+        <Setter Property="BackgroundColor"   Value="Transparent"/>
+        <Setter Property="TextColor"         Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"        Value="SFProTextRegular"/>
+        <Setter Property="FontSize"          Value="{StaticResource fsize_i19}"/>
+        <Setter Property="Margin"            Value="15,0,0,0"/>
+    </Style>
+
+    <Style x:Key="entryStyle_i2" TargetType="customelements:CustomEntry">
+        <Setter Property="BackgroundColor"          Value="Transparent"/>
+        <Setter Property="TextColor"                Value="{StaticResource fcolor_b7}"/>
+        <Setter Property="FontFamily"               Value="SFProDisplayRegular"/>
+        <Setter Property="FontSize"                 Value="{StaticResource fsize_i28}"/>
+        <Setter Property="Margin"                   Value="0,0,0,0"/>
+        <Setter Property="HorizontalTextAlignment"  Value="Center"/>
+        <Setter Property="VerticalOptions"          Value="Center"/>
+        <Setter Property="PlaceholderColor"         Value="{StaticResource fcolor_b2}"/>
+    </Style>
+
+    <!-- RADIOBUTTON STYLES -->
+    <Style x:Key="radioButtonStyle_i1" TargetType="RadioButton">
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor"     Value="{StaticResource fcolor_b1}"/>
+                            <Setter Property="FontFamily"    Value="SFProTextRegular"/>
+                            <Setter Property="FontSize"      Value="{StaticResource fsize_i13}"/>
+                            <Setter Property="Opacity"       Value="0.5"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="IsChecked">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor"     Value="{StaticResource fcolor_b3}" />
+                            <Setter Property="FontFamily"    Value="SFProTextRegular"/>
+                            <Setter Property="FontSize"      Value="{StaticResource fsize_i13}"/>
+                            <Setter Property="Opacity"       Value="1"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    <Style x:Key="labelForRadiobutton" TargetType="Label">
+        <Setter Property="TextColor"            Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"           Value="SFProTextRegular"/>
+        <Setter Property="FontSize"             Value="{StaticResource fsize_i13}"/>
+        <Setter Property="VerticalOptions"      Value="Center"/>
+    </Style>
+
+
+    <!-- BUTTON STYLES -->
+    <Style x:Key="gradientButtonStyle_i1" TargetType="customelements:GradientButton">
+        <Setter Property="TextColor"           Value="{StaticResource fcolor_b5}"/>
+        <Setter Property="FontFamily"          Value="SFProTextMedium"/>
+        <Setter Property="FontSize"            Value="{StaticResource fsize_i16}"/>
+        <Setter Property="StartColor"          Value="{StaticResource tcolor_b8}"/>
+        <Setter Property="EndColor"            Value="{StaticResource tcolor_b9}"/>
+        <Setter Property="GradientOrientation" Value="Vertical"/>
+        <Setter Property="CornerRadius"        Value="2"/>
+    </Style>
+
+    <Style x:Key="gradientButtonSearchUser" TargetType="customelements:GradientButton">
+        <Setter Property="TextColor"           Value="{StaticResource fcolor_b5}"/>
+        <Setter Property="FontFamily"          Value="SFProTextMedium"/>
+        <Setter Property="FontSize"            Value="{StaticResource fsize_i16}"/>
+        <Setter Property="StartColor"          Value="{StaticResource tcolor_b8}"/>
+        <Setter Property="EndColor"            Value="{StaticResource tcolor_b9}"/>
+        <Setter Property="GradientOrientation" Value="Vertical"/>
+    </Style>
+
+    <Style x:Key="ButtonStyle_i2" TargetType="Button">
+        <Setter Property="TextColor"           Value="{StaticResource fcolor_b3}"/>
+        <Setter Property="FontFamily"          Value="SFProTextMedium"/>
+        <Setter Property="FontSize"            Value="{StaticResource fsize_i15}"/>
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="HorizontalOptions"   Value="Center"/>
+    </Style>
+
+    <Style x:Key="ButtonStyle_i3" TargetType="Button">
+        <Setter Property="TextColor"           Value="{StaticResource fcolor_b3}"/>
+        <Setter Property="FontFamily"          Value="SFProTextMedium"/>
+        <Setter Property="FontSize"            Value="{StaticResource fsize_i18}"/>
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="HorizontalOptions"   Value="Center"/>
+    </Style>
+
+    <Style x:Key="SearchUserButton" TargetType="Button">
+        <Setter Property="TextColor"           Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"          Value="SFProTextMedium"/>
+        <Setter Property="FontSize"            Value="{StaticResource fsize_i16}"/>
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="BorderWidth"         Value="1"/>
+        <Setter Property="HeightRequest"       Value="50"/>
+        <Setter Property="CornerRadius"        Value="25"/>
+        <Setter Property="BorderColor"         Value="{StaticResource fcolor_b6}"/>
+    </Style>
+    
+    <Style x:Key="CustomThreeTabsButton"       TargetType="Button">
+        <Setter Property="TextColor"           Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="FontFamily"          Value="SFProTextMedium"/>
+        <Setter Property="FontSize"            Value="{StaticResource fsize_i15}"/>
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="Padding"             Value="0"/>
+        <Setter Property="Opacity"             Value="0.5"/>
+    </Style>
+
+    <!-- IMAGEBUTTON STYLES -->
+    <Style x:Key="ImageButtonStyle_i1" TargetType="ImageButton">
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="HorizontalOptions"   Value="Center"/>
+        <Setter Property="VerticalOptions"     Value="Center"/>
+    </Style>
+
+    <Style x:Key="ImageButtonSearchUser" TargetType="ImageButton">
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="HorizontalOptions"   Value="Center"/>
+        <Setter Property="VerticalOptions"     Value="Center"/>
+        <Setter Property="HeightRequest"       Value="100"/>
+    </Style> 
+    
+    <Style x:Key="ProfileTabbarImageButton" TargetType="ImageButton">
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="HorizontalOptions"   Value="Center"/>
+        <Setter Property="VerticalOptions"     Value="Center"/>
+        <Setter Property="HeightRequest"       Value="25"/>
+        <Setter Property="WidthRequest"        Value="25"/>
+        <Setter Property="Aspect"              Value="AspectFit"/>
+    </Style>
+
+    <Style x:Key="addButtonStyle" TargetType="ImageButton">
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="HorizontalOptions"   Value="Center"/>
+        <Setter Property="VerticalOptions"     Value="Center"/>
+        <Setter Property="HeightRequest"       Value="{StaticResource fsize_i40}"/>
+        <Setter Property="Aspect"              Value="AspectFit"/>
+    </Style>
+
+    <!-- SEARCH BAR STYLE -->
+    <Style x:Key="SearchBarStyle_i1" TargetType="customelements:CustomSearchBar">
+        <Setter Property="BackgroundColor"     Value="Transparent"/>
+        <Setter Property="VerticalOptions"     Value="Center"/>
+        <Setter Property="FontFamily"          Value="SFProTextRegular"/>
+        <Setter Property="PlaceholderColor"    Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="FontSize"            Value="{StaticResource fsize_i17}"/>
+        <Setter Property="TextColor"           Value="{StaticResource fcolor_b1}"/>
+    </Style>
+
+    <!-- BOX VIEW STYLES-->
+    <Style x:Key="BoxViewStyle_i1" TargetType="BoxView">
+        <Setter Property="HeightRequest"     Value="1"/>
+        <Setter Property="Color"             Value="{StaticResource tcolor_b3}"/>
+        <Setter Property="Opacity"           Value="{StaticResource opacity_06}"/>
+    </Style>
+    <Style x:Key="BoxViewStyle_i2" TargetType="BoxView">
+        <Setter Property="Color"             Value="{StaticResource tcolor_b11}"/>
+        <Setter Property="Opacity"           Value="{StaticResource opacity_06}"/>
+        <Setter Property="CornerRadius"      Value="{StaticResource radius_1}"/>
+    </Style>
+
+    <Style x:Key="BoxViewStyleCustomTabs" TargetType="BoxView">
+        <Setter Property="HeightRequest"     Value="4"/>
+        <Setter Property="CornerRadius"      Value="{StaticResource boxViewCornerCustomTabs}"/>
+    </Style>
+
+    <Style x:Key="BoxViewStyleCreatePostMenuDivider" TargetType="BoxView">
+        <Setter Property="HeightRequest"     Value="1"/>
+        <Setter Property="BackgroundColor"      Value="{StaticResource tcolor_b2}"/>
+    </Style>
+
+    <!--Range Slider-->
+    <Style x:Key="RangeSlider_i1" TargetType="range_slider:RangeSlider">
+        <Setter Property="VerticalOptions"      Value="Center"/>
+        <Setter Property="TextSize"             Value="{StaticResource fsize_i13}"/>
+        <Setter Property="TextColor"            Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BarHeight"            Value="10"/>
+        <Setter Property="ShowTextAboveThumbs"  Value="True"/>
+        <Setter Property="MinimumValue"         Value="18"/>
+        <Setter Property="MaximumValue"         Value="60"/>
+        <Setter Property="StepValue"            Value="1"/>
+        <Setter Property="StepValueContinuously" Value="False"/>
+    </Style>
+
+    <Style x:Key="RangeSliderDistance" TargetType="range_slider:RangeSlider">
+        <Setter Property="VerticalOptions"      Value="Center"/>
+        <Setter Property="TextSize"             Value="{StaticResource fsize_i13}"/>
+        <Setter Property="TextColor"            Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="BarHeight"            Value="10"/>
+        <Setter Property="ShowTextAboveThumbs"  Value="True"/>
+        <Setter Property="MinimumValue"         Value="1"/>
+        <Setter Property="MaximumValue"         Value="20"/>
+        <Setter Property="StepValue"            Value="1"/>
+        <Setter Property="StepValueContinuously" Value="False"/>
+    </Style>
+
+    <!--SPAN STYLES-->
+    <Style x:Key="spanStyle_i1" TargetType="Span">
+        <Setter Property="LineHeight"     Value="{StaticResource lheight_c1}"/>
+    </Style>
+
+    <!--STACKLAYOUT STYLES-->
+    <Style x:Key="stackLayoutStyle_1" TargetType="StackLayout">
+        <Setter Property="Margin"     Value="0"/>
+        <Setter Property="Padding"     Value="0"/>
+        <Setter Property="Spacing"     Value="0"/>
+    </Style>
+    
+    <!--EDITOR STYLES-->
+    <Style x:Key="editorStyle_1" TargetType="Editor">
+        <Setter Property="FontSize"                Value="{StaticResource fsize_i14}"/>
+        <Setter Property="TextColor"               Value="{StaticResource tcolor_b11}"/>
+        <Setter Property="PlaceholderColor"        Value="{StaticResource fcolor_b6}"/>
+        <Setter Property="FontFamily"              Value="SFProTextRegular"/>
+    </Style>
+    <Style x:Key="editorStyle_i2" TargetType="Editor">
+        <Setter Property="BackgroundColor"   Value="Transparent"/>
+        <Setter Property="TextColor"         Value="{StaticResource fcolor_b1}"/>
+        <Setter Property="FontFamily"        Value="SFProTextRegular"/>
+        <Setter Property="FontSize"          Value="{StaticResource fsize_i19}"/>
+        <Setter Property="Margin"            Value="15,0,0,0"/>
+    </Style>
+
+</ResourceDictionary>

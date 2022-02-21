@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.Chat;assembly=XamarinSocial"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:chatControls="clr-namespace:XamarinSocial.CustomElements.Chat"
+                           xmlns:selectors="clr-namespace:XamarinSocial.Selectors"
+                           xmlns:sharedControls="clr-namespace:XamarinSocial.CustomElements.Shared"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.Chat.ChatConversationPage"
+                           xmlns:localization="clr-namespace:XamarinSocial.Resources.Strings"
+                           x:TypeArguments="viewModels:ChatConsersationViewModel"
+                           xmlns:ffiamgeloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+                           xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                           xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                           HasNativeNavBar="False"
+                           Title="ChatConsersation">
+
+    <baseView:BaseContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <selectors:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
+
+        </ResourceDictionary>
+
+    </baseView:BaseContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <RelativeLayout>
+
+            <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=10}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-80}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         Orientation="Vertical"
+                         BackgroundColor="{StaticResource tcolor_b5}">
+
+                <!--Header-->
+                <StackLayout Orientation="Horizontal"
+                             BackgroundColor="{StaticResource tcolor_b7}"
+                             Padding="20,10">
+
+                    <ImageButton Style="{StaticResource ProfileTabbarImageButton}"
+                                 Source="img_backArrow.png"
+                                 Command="{mvx:MvxBind BackCommand}"/>
+
+                    <ffiamgeloading:CachedImage RetryCount= "3"
+                                                RetryDelay= "600"
+                                                HeightRequest="50"
+                                                DownsampleToViewSize="True"
+                                                Aspect="AspectFit"
+                                                VerticalOptions="Center"
+                                                Margin="8,0"
+                                                Source="{Binding UserChatModel.ImageSource}">
+
+                        <ffiamgeloading:CachedImage.Transformations>
+
+                            <fftransformations:CircleTransformation BorderHexColor="{StaticResource hex_transparent}"
+                                                                    BorderSize="0"/>
+
+                        </ffiamgeloading:CachedImage.Transformations>
+
+                    </ffiamgeloading:CachedImage>
+
+                    <StackLayout Orientation="Vertical"
+                                 HorizontalOptions="StartAndExpand">
+
+                        <Label TextColor="{StaticResource fcolor_b1}"
+                               FontSize="{StaticResource fsize_i14}"
+                               FontFamily="SFProTextMedium"
+                               mvx:Bi.nd="Text UserChatModel.UserName"/>
+
+                        <Label TextColor="{StaticResource fcolor_green_line}"
+                               FontSize="{StaticResource fsize_i12}"
+                               FontFamily="SFProTextRegular"
+                               mvx:Bi.nd="Text UserChatModel.OnlineStatusText">
+
+                            <Label.Triggers>
+
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding UserChatModel.IsOnline}" 
+                                             Value="False" >
+
+                                    <Setter Property="TextColor" Value="{StaticResource badge_color_i2}"/>
+
+                                </DataTrigger>
+
+                            </Label.Triggers>
+
+                        </Label>
+
+                    </StackLayout>
+
+                    <ffimageloadingsvg:SvgCachedImage DownsampleToViewSize="True"
+                                                      Source="settings.svg"
+                                                      HeightRequest="20"
+                                                      Aspect="AspectFit">
+
+                        <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{mvx:MvxBind OpenMenuCommand}"/>
+                        </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    </ffimageloadingsvg:SvgCachedImage>
+
+                </StackLayout>
+
+                <!--Main content-->
+                <chatControls:ChatListView x:Name="ChatList"
+                                           ItemTemplate="{StaticResource MessageTemplateSelector}" 
+                                           BackgroundColor="Transparent"
+                                           Margin="15,5"
+                                           ItemTapped="OnListTapped"
+                                           FlowDirection="RightToLeft"
+                                           HasUnevenRows="True"
+                                           VerticalOptions="FillAndExpand" 
+                                           SeparatorColor="Transparent"
+                                           mvx:Bi.nd="ItemsSource Items;
+                                                      ItemAppearingCommand ItemAppearingCommand;
+                                                      ItemDisappearingCommand ItemDisappearingCommand;
+                                                      TappedCommand ItemSelectedCommand"/>
+
+            </StackLayout>
+
+            <!--Footer-->
+            <Grid RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0}"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-70}" 
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=70}"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                  BackgroundColor="{StaticResource tcolor_b7}"
+                  Padding="5,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <sharedControls:ImageSvgButton Grid.Column="0"
+                                               Padding="5"
+                                               ImageSource="img_attach.svg"
+                                               ClickCommand="{mvx:MvxBind AttachCommand}"/>
+
+                <Entry Grid.Column="1"
+                       x:Name="entryView"
+                       Unfocused="EntryView_Unfocused"
+                       Style="{StaticResource entryStyle_i1}"
+                       FontSize="{StaticResource fsize_i15}"
+                       VerticalOptions="Center"
+                       mvx:Bi.nd="Text NewMessageText;
+                                  Placeholder [TextMessage]"/>
+
+                <sharedControls:ImageSvgButton Grid.Column="2"
+                                               Padding="5"
+                                               ImageSource="img_emojy.svg"
+                                               ClickCommand="{mvx:MvxBind AddEmojyCommand}"/>
+
+                <sharedControls:ImageSvgButton Grid.Column="3"
+                                               Padding="5"
+                                               ImageSource="img_send.svg"
+                                               ClickCommand="{mvx:MvxBind SendCommand}"/>
+
+            </Grid>
+
+        </RelativeLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage >

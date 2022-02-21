@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+                          xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.SignUp;assembly=XamarinSocial"
+                          xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                          xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                          x:Class="XamarinSocial.Views.SignUp.CountryCode"
+                          x:TypeArguments="viewModels:CountryCodeViewModel"
+                         HasNativeNavBar="False"      
+                         Title="Country Code">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.02*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.02*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="1"
+                   Style="{StaticResource welcomStyle_i8}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Label.GestureRecognizers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="&#xf053; "
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="FontAwesome5Solid">
+                            </Span>
+                            <Span mvx:Bi.nd="Text [Back]" 
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="SFProDisplayRegular">
+                            </Span>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label  Grid.Column="1" Grid.Row="2" 
+                    mvx:Bi.nd="Text [CountryCode]"
+                    Style="{StaticResource welcomStyle_i9}"/>
+            <Frame Grid.Column="1" Grid.Row="3"
+                   Style="{StaticResource frameStyle_i2}">
+                <customelements:CustomSearchBar
+                    Style="{StaticResource SearchBarStyle_i1}"
+                    mvx:Bi.nd="Text SearchString; Placeholder [Search]"/>
+            </Frame>
+
+            <ListView Grid.Row="4" Grid.Column="1"
+                      BackgroundColor="Transparent"
+                      IsGroupingEnabled="True"
+                      ItemsSource="{Binding CountryCodes}"
+                      GroupDisplayBinding="{Binding Key}"
+                      GroupShortNameBinding="{Binding Key}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                      HasUnevenRows="True">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                                <Label Text="{Binding Key}" 
+                                       Style="{StaticResource welcomStyle_i11}"
+                                       BackgroundColor="#ededf5"
+                                       Padding="5"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Name}"
+                                       HorizontalOptions="Start"
+                                       Style="{StaticResource welcomStyle_i10}"/>
+                                <Label Grid.Column="1" Text="{Binding Code}"
+                                       HorizontalOptions="End"
+                                       Style="{StaticResource welcomStyle_i10}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

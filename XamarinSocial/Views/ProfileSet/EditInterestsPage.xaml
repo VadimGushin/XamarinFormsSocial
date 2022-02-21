@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.ProfileSet;assembly=XamarinSocial"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:customControls="clr-namespace:XamarinSocial.CustomElements"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.ProfileSet.EditInterestsPage"
+                           x:TypeArguments="viewModels:EditInterestsViewModel"
+                           xmlns:dltag="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.TagEntryView"
+                           HasNativeNavBar="False"      
+                           Title="EditInterests">
+
+    <ContentPage.Content>
+
+        <RelativeLayout>
+
+            <StackLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         Orientation="Vertical"
+                         Margin="20,10,20,0">
+
+                <customControls:CustomNavigationBar BackgroundViewColor="Transparent"
+                                                    LeftImage="cancel_button.png"
+                                                    RightImage="accept_button.png"
+                                                    LeftButtonClickCommand="{mvx:MvxBind ClosePageCommand}"
+                                                    RightButtonClickCommand="{mvx:MvxBind EditInterestsCommand}"
+                                                    mvx:Bi.nd="Title [EditProfile]"/>
+
+                <Label Style="{StaticResource customBindableControl_i1}"
+                       Margin="0,5"
+                       mvx:Bi.nd="Text [Interests]"/>
+
+                <ScrollView>
+
+                    <dltag:TagEntryView TagItems="{Binding Interests}"
+                                        TagTappedCommand="{Binding RemoveInterestCommand}"
+                                        AllowKeyboardReturnToAddNewTag="true"
+                                        ShowEntryBox="False"
+                                        Padding="0,5">
+
+                            <dltag:TagEntryView.TagItemTemplate>
+                                <DataTemplate>
+
+                                    <Frame Style="{StaticResource tagsProfileFrameStyle}"
+                                           Padding="5">
+
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <Label Text="{Binding .}"
+                                                   Style="{StaticResource profileTagsStyle}"
+                                                   Margin="10,0"/>
+
+                                        <Image Source="img_cancel.png"
+                                                   HorizontalOptions="End"/>
+
+                                    </StackLayout>
+
+                                </Frame>
+
+                                </DataTemplate>
+                            </dltag:TagEntryView.TagItemTemplate>
+
+                        </dltag:TagEntryView>
+
+                </ScrollView>
+
+            </StackLayout>
+
+            <Grid RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0}"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}" 
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=40}"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                  Margin="20,0"
+                  BackgroundColor="Transparent">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="0"
+                       Style="{StaticResource frameStyle_i1}">
+
+                    <Entry x:Name="entryView"
+                           Unfocused="EntryView_Unfocused"
+                           Style="{StaticResource entryStyle_i1}"
+                           FontSize="{StaticResource fsize_i15}"
+                           VerticalOptions="Center"
+                           Placeholder="Enter tag"
+                           mvx:Bi.nd="Text NewTagText"/>
+
+                </Frame>
+
+                <ImageButton Grid.Column="1"
+                             Style="{StaticResource addButtonStyle}"
+                             Source="add.png"
+                             Command="{mvx:MvxBind AddTagCommand}"/>
+
+            </Grid>
+
+        </RelativeLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="XamarinSocial.CustomElements.CustomBindableEntry">
+
+    <ContentView.Content>
+
+        <StackLayout Orientation="Vertical"
+                   Margin="0,4">
+
+            <Label x:Name="lblTitle"
+                   Style="{StaticResource customBindableControl_i1}"/>
+
+            <Frame x:Name="frameView"
+                   Style="{StaticResource frameStyle_i1}"
+                   Margin="0,15,0,0">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/> 
+                    </Grid.ColumnDefinitions>
+
+                    <Entry Grid.Column="0"
+                           x:Name="entryValue"                          
+                           Style="{StaticResource entryStyle_i1}"
+                           VerticalOptions="FillAndExpand"
+                           BackgroundColor="Transparent"/>
+
+                    <!--<Editor Grid.Column="0"
+                            x:Name="entryValue"
+                            Style="{StaticResource editorStyle_i2}"
+                            VerticalOptions="FillAndExpand"
+                            BackgroundColor="Transparent"/>-->
+
+                    <ffimageloadingsvg:SvgCachedImage Grid.Column="1"
+                                                      x:Name="RightImage"
+                                                      DownsampleToViewSize="True" 
+                                                      Aspect="AspectFit"
+                                                      Margin="10"
+                                                      HorizontalOptions="End"/>
+
+                    <BoxView Grid.ColumnSpan="2"
+                             x:Name="tappedBoxView"
+                             BackgroundColor="Transparent"/>
+
+                </Grid>
+
+            </Frame>
+
+            <Frame x:Name="frameTextView"
+                   Style="{StaticResource frameStyle_i1}"
+                   Margin="0,15,0,0">
+
+                <Editor x:Name="entryTextValue"
+                        Style="{StaticResource editorStyle_i2}"
+                        Margin="15,0"
+                        AutoSize="TextChanges"
+                        VerticalOptions="FillAndExpand"
+                        BackgroundColor="Transparent"/>
+
+            </Frame>
+
+            <Label x:Name="lblError"
+                   Style="{StaticResource welcomStyle_i14}"/>
+
+        </StackLayout>
+
+    </ContentView.Content>
+
+</ContentView>

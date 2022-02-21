@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.CustomElements.Notification.NotificationControl"
+             xmlns:ffiamgeloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+
+    <ContentView.Content>
+
+        <StackLayout x:Name="mainLayout"
+                     Margin="0,10"
+                     Orientation="Horizontal">
+
+            <ffiamgeloading:CachedImage x:Name="imageView"
+                                        RetryCount= "3"
+                                        RetryDelay= "600"
+                                        HeightRequest="40"
+                                        Margin="0,3"
+                                        DownsampleToViewSize="True"
+                                        Aspect="AspectFit"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start">
+
+                <ffiamgeloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation BorderHexColor="{StaticResource hex_transparent}"
+                                                            BorderSize="0"/>
+                </ffiamgeloading:CachedImage.Transformations>
+
+            </ffiamgeloading:CachedImage>
+
+            <BoxView BackgroundColor="{StaticResource hex_transparent}"
+                     WidthRequest="5"/>
+
+            <StackLayout Orientation="Vertical"
+                         Spacing="5">
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Label x:Name="leftTopTextView"
+                           VerticalOptions="End"
+                           FontFamily="SFProTextMedium"
+                           TextColor="{StaticResource tcolor_b2}"
+                           FontSize="{StaticResource fsize_i14}"/>
+
+                    <Label x:Name="rightTopTextView"
+                           VerticalOptions="End"
+                           FontFamily="SFProTextRegular"
+                           TextColor="{StaticResource fcolor_b6}"
+                           FontSize="{StaticResource fsize_i13}"/>
+
+                </StackLayout>
+
+                <Label x:Name="messageTextView"
+                       TextColor="{StaticResource fcolor_b1}"
+                       FontSize="{StaticResource fsize_i15}"
+                       LineBreakMode="TailTruncation"
+                       MaxLines="1"
+                       FontFamily="SFProTextRegular"
+                       IsVisible="False"/>
+
+                <Label x:Name="dateTextView"
+                       TextColor="{StaticResource fcolor_b6}"
+                       FontSize="{StaticResource fsize_i10}"
+                       FontFamily="SFProTextRegular"/>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentView.Content>
+
+</ContentView>

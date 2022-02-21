@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.Settings;assembly=XamarinSocial"
+                           xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                           xmlns:settingsControls="clr-namespace:XamarinSocial.CustomElements.Settings"
+                           xmlns:customControls="clr-namespace:XamarinSocial.CustomElements"
+                           xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                           x:Class="XamarinSocial.Views.Settings.SocialNetworkSettingsPage"
+                           xmlns:localization="clr-namespace:XamarinSocial.Resources.Strings"
+                           x:TypeArguments="viewModels:SocialNetworkSettingsViewModel"
+                           HasNativeNavBar="False"
+                           Title="SocialNetworkSettings">
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="0,15">
+
+            <customControls:CustomNavigationBar BackgroundViewColor="Transparent"
+                                                LeftImage="img_backArrow.png"
+                                                LeftButtonClickCommand="{mvx:MvxBind BackCommand}"
+                                                Title="{Static localization:Strings.SocialNetworks}"/>
+
+            <BoxView Style="{StaticResource BoxViewStyle_i1}"/>
+
+            <ScrollView>
+
+                <StackLayout Orientation="Vertical"
+                             Padding="15,0">
+
+                    <Label Style="{StaticResource settings_i1}"
+                           Padding="0"
+                           Text="{x:Static localization:Strings.InviteFriends}"/>
+
+                    <settingsControls:SocialNetworkControl LeftImageSource="img_facebookLogo.svg"
+                                                           IsRightImageVisible="True"
+                                                           mvx:Bi.nd="Text FacebookFriendsCount;
+                                                                      TapCommand OpenFacebookFriendsCommand"/>
+
+                    <Label Style="{StaticResource settings_i1}"
+                           Padding="0"
+                           Text="{x:Static localization:Strings.Other}"/>
+
+                    <settingsControls:SocialNetworkControl IsRightImageVisible="True"
+                                                           Text="{Static localization:Strings.BlockedUsers}"
+                                                            mvx:Bi.nd="TapCommand OpenBlockedUsersCommand"/>
+
+                    <settingsControls:SocialNetworkControl Text="{Static localization:Strings.Updates}"
+                                                           mvx:Bi.nd="BadgeText UpdatesBadgeText;
+                                                                      TapCommand OpenUpdatesCommand"/>
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</baseView:BaseContentPage >

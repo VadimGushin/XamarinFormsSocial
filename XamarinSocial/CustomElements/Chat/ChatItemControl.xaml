@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.CustomElements.Chat.ChatItemControl"
+             xmlns:sharedControls="clr-namespace:XamarinSocial.CustomElements.Shared"
+             xmlns:ffiamgeloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+
+    <ContentView.Content>
+
+        <StackLayout Orientation="Vertical"
+                     Spacing="10">
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Fill">
+
+                <RelativeLayout HorizontalOptions="Start">
+
+                    <ffiamgeloading:CachedImage x:Name="imageView"
+                                                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=50}"
+                                                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=50}"
+                                                RetryCount= "3"
+                                                RetryDelay= "600"
+                                                DownsampleToViewSize="True"
+                                                Aspect="AspectFit">
+
+                        <ffiamgeloading:CachedImage.Transformations>
+
+                            <fftransformations:CircleTransformation BorderHexColor="{StaticResource hex_transparent}"
+                                                                    BorderSize="0"/>
+
+                        </ffiamgeloading:CachedImage.Transformations>
+
+                    </ffiamgeloading:CachedImage>
+
+                    <BoxView x:Name="onlineView"
+                             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=41}"
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=36}"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=8}"
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=8}"
+                             BackgroundColor="{StaticResource tcolor_b12}"
+                             IsVisible="false"
+                             CornerRadius="4">
+
+                    </BoxView>
+
+                </RelativeLayout>
+
+                <BoxView BackgroundColor="{StaticResource hex_transparent}"
+                         HorizontalOptions="Start"
+                         WidthRequest="5"/>
+
+                <!--<StackLayout Orientation="Vertical"
+                             BackgroundColor="Yellow">
+
+                    <Label x:Name="userNameView"
+                           FontFamily="SFProTextMedium"
+                           TextColor="{StaticResource tcolor_b11}"
+                           FontSize="{StaticResource fsize_i16}"/>
+
+                    <Label x:Name="messageTextView"
+                           TextColor="{StaticResource tcolor_b11}"
+                           FontSize="{StaticResource fsize_i13}"
+                           FontFamily="SFProTextRegular"
+                           LineBreakMode="TailTruncation"
+                           MaxLines="1"/>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical"
+                             BackgroundColor="Orange"
+                             HorizontalOptions="EndAndExpand">
+
+                    <Label x:Name="dateTextView"
+                           TextColor="{StaticResource fcolor_b6}"
+                           FontSize="{StaticResource fsize_i10}"
+                           FontFamily="SFProTextRegular"
+                           VerticalOptions="Start"
+                           HorizontalOptions="End"/>
+
+                    <sharedControls:BadgeControl x:Name="badgeView" 
+                                                 VerticalOptions="EndAndExpand"
+                                                 IsVisible="False"
+                                                 IsRounded="True"
+                                                 HorizontalOptions="End"/>
+
+                </StackLayout>-->
+
+                <Grid HorizontalOptions="FillAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           x:Name="userNameView"
+                           FontFamily="SFProTextMedium"
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource tcolor_b11}"
+                           FontSize="{StaticResource fsize_i16}"/>
+
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           x:Name="messageTextView"
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource tcolor_b11}"
+                           FontSize="{StaticResource fsize_i13}"
+                           FontFamily="SFProTextRegular"
+                           LineBreakMode="TailTruncation"
+                           MaxLines="1"/>
+
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           x:Name="dateTextView"
+                           MaxLines="2"
+                           LineBreakMode="TailTruncation"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource fcolor_b6}"
+                           FontSize="{StaticResource fsize_i9}"
+                           FontFamily="SFProTextRegular"
+                           HorizontalOptions="End"/>
+
+                    <sharedControls:BadgeControl Grid.Row="1"
+                                                 Grid.Column="1"
+                                                 x:Name="badgeView" 
+                                                 VerticalOptions="Center"
+                                                 IsVisible="False"
+                                                 IsRounded="True"
+                                                 HorizontalOptions="End"/>
+
+                </Grid>
+
+            </StackLayout>
+
+            <BoxView HeightRequest="1"
+                     BackgroundColor="{StaticResource tcolor_b10}"/>
+
+        </StackLayout>
+
+    </ContentView.Content>
+
+</ContentView>

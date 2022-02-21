@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                          xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                          xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                          xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                          xmlns:controls="clr-namespace:XamarinSocial.CustomElements"
+                          xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels;assembly=XamarinSocial"
+                          xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+                          xmlns:feedViews="clr-namespace:XamarinSocial.Views.Feed"
+                          x:Class="XamarinSocial.Views.Feed.CreatePost"
+                          x:TypeArguments="viewModels:CreatePostViewModel"
+                          HasNativeNavBar="False">
+    <ContentPage.Content>
+        <controls:KeyboardGrid VerticalOptions="FillAndExpand" 
+                               Margin="0" 
+                               Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0" >
+                <StackLayout Style="{StaticResource stackLayoutStyle_1}">
+                    <!--header-->
+                    <Grid RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="24*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="8*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="24*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="280*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="24*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ffimageloadingsvg:SvgCachedImage
+                            Grid.Column="2" Grid.Row="2" 
+                            DownsampleToViewSize="True"
+                            Source="close.svg"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent">
+                        </ffimageloadingsvg:SvgCachedImage>
+
+
+                        <!--handle 'cancel' click -->
+                        <ContentView Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                             Margin="0"
+                             Padding="0"
+                             BackgroundColor="Transparent">
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CancelCreatePostCommandAsync}"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
+
+
+                        <Label Grid.Column="4" Grid.Row="2" 
+                       Style="{StaticResource welcomStyle_i26}"
+                       HorizontalTextAlignment="Center"
+                       mvx:Bi.nd="Text [CreatePost]"/>
+
+                        <ffimageloadingsvg:SvgCachedImage
+                            Grid.Column="6" Grid.Row="2" 
+                            DownsampleToViewSize="True"
+                            Source="check.svg"
+                            Aspect="AspectFit">
+                        </ffimageloadingsvg:SvgCachedImage>
+
+                        <!--handle 'confirm' click -->
+                        <ContentView Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                             Margin="0"
+                             Padding="0"
+                             BackgroundColor="Transparent">
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ConfirmCreatePostCommandAsync}"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
+
+                    </Grid>
+
+                    <!--bottom header spacing-->
+                    <RelativeLayout Margin="0"
+                            Padding="0" 
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill">
+                        <Frame Style="{StaticResource frameStyle_i3}"
+                           RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                           RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_2}}">
+                        </Frame>
+                    </RelativeLayout>
+
+                    <Grid RowSpacing="0" ColumnSpacing="0"
+                  VerticalOptions="Fill">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="16*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="300*"/>
+                            <ColumnDefinition Width="16*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ffimageloading:CachedImage
+                            Grid.Column="1" Grid.Row="0"
+                            Aspect="AspectFit"
+                            VerticalOptions="Start"
+                            RetryCount= "3"
+                            RetryDelay= "600"
+                            DownsampleToViewSize="False"
+                            Source="{Binding ProfileImageSource}">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+
+                        <controls:ExtendedEditor 
+                        x:Name="entryDescription"
+                        Grid.Column="3" Grid.Row="0" 
+                        Placeholder="{Binding [WhatIsInYourMind]}"
+                        MaxLength="500"
+                        Keyboard="Chat"
+                        AutoSize="TextChanges"
+                        BackgroundColor="Transparent"
+                        Text="{Binding Description}">
+
+                        </controls:ExtendedEditor>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- bottom <Add media> control -->
+            <Grid RowSpacing="0" ColumnSpacing="0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="343*"/>
+                    <ColumnDefinition Width="16*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <RelativeLayout Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
+                            Margin="0" 
+                            Padding="0">
+
+                    <feedViews:CreatePostHorizontalImageList 
+                        HorizontalOptions="Fill"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_3}}"
+                        AddContentPressed="CreatePostHorizontalImageList_AddContentPressed"/>
+                </RelativeLayout>
+
+                <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" 
+                         Style="{StaticResource BoxViewStyleCreatePostMenuDivider}"/>
+
+
+                <RelativeLayout Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
+                            Margin="0" 
+                            Padding="0">
+
+                        <feedViews:KeyboardTopMenu
+                                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor={StaticResource factor_3}}"
+                                     AddContentPressed="CreatePostHorizontalImageList_AddContentPressed"/>
+
+                    </RelativeLayout>
+            </Grid>
+        </controls:KeyboardGrid>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

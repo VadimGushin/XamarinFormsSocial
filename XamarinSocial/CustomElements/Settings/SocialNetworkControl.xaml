@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.CustomElements.Settings.SocialNetworkControl"
+             xmlns:sharedControls="clr-namespace:XamarinSocial.CustomElements.Shared"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+    
+    <ContentView.Content>
+        
+        <StackLayout x:Name="mainFrameView"
+                     Orientation="Horizontal"
+                     Padding="0,15">
+
+            <ffimageloadingsvg:SvgCachedImage x:Name="leftImageView"
+                                              DownsampleToViewSize="True"
+                                              HeightRequest="{StaticResource fsize_i30}"
+                                              Aspect="AspectFit"
+                                              IsVisible="False"
+                                              Margin="2,0"
+                                              HorizontalOptions="Start"/>
+
+            <Label x:Name="mainText"
+                   TextColor="{StaticResource fcolor_b10}"
+                   FontSize="{StaticResource fsize_i15}"
+                   FontFamily="SFProTextRegular"
+                   VerticalOptions="Center"
+                   HorizontalOptions="StartAndExpand" />
+
+            <sharedControls:BadgeControl x:Name="badgeView" 
+                                         VerticalOptions="Center"
+                                         IsVisible="False"
+                                         IsRounded="False"/>
+
+            <Label x:Name="rightImage"
+                   VerticalOptions="Center"
+                   Text="&#xf054; "
+                   IsVisible="False"
+                   Style="{StaticResource welcomStyle_i12}"
+                   TextColor="{StaticResource fcolor_b10}"
+                   FontFamily="FontAwesome5Solid"/>
+
+        </StackLayout>
+        
+    </ContentView.Content>
+    
+</ContentView>

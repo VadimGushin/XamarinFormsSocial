@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customelements="clr-namespace:XamarinSocial.CustomElements"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.SignUp;assembly=XamarinSocial"
+             xmlns:baseView="clr-namespace:XamarinSocial.Views.Base"
+             xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+             x:Class="XamarinSocial.Views.SignUp.EmailSignUp"
+             x:TypeArguments="viewModels:EmailSignUpViewModel"
+             HasNativeNavBar="False"      
+             Title="EmailSignUp">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="13*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.02*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.02*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="1" Grid.Row="1"
+                   Style="{StaticResource welcomStyle_i8}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{mvx:MvxBind BackCommand}"/>
+                </Label.GestureRecognizers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="&#xf053; "
+                                  FontFamily="FontAwesome5Solid"
+                                  Style="{StaticResource welcomStyle_i12}">
+                            </Span>
+                            <Span mvx:Bi.nd="Text [Back]" 
+                                  Style="{StaticResource welcomStyle_i12}"
+                                  FontFamily="SFProDisplayRegular">
+                            </Span>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label  Grid.Column="1" Grid.Row="2" 
+                    mvx:Bi.nd="Text [Email]" 
+                    Style="{StaticResource welcomStyle_i9}"/>
+            <BoxView  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"
+                      Style="{StaticResource BoxViewStyle_i1}"/>
+            <Grid Grid.Column="1" Grid.Row="4"
+                  Margin="10,10,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1"
+                       mvx:Bi.nd="Text [Email]"
+                       Style="{StaticResource welcomStyle_i5}"/>
+                <Frame Grid.Row="2"
+                       Style="{StaticResource frameStyle_i1}">
+                    <customelements:CustomEntry BackgroundColor="Transparent"
+                                     Style="{StaticResource entryStyle_i1}"
+                                     mvx:Bi.nd="CustomEntryUnfocusedProperty CheckEmailCommand;  Text Email">
+                        <customelements:CustomEntry.Triggers>
+                            <DataTrigger TargetType="customelements:CustomEntry" Binding="{Binding IsValidEmail}" Value="false">
+                                <Setter Property="TextColor" Value="#F42525"/>
+                            </DataTrigger>
+                        </customelements:CustomEntry.Triggers>
+                    </customelements:CustomEntry>
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsValidEmail}" Value="false">
+                            <Setter Property="BorderColor" Value="#FC6D6D"/>
+                        </DataTrigger>
+                    </Frame.Triggers>
+                </Frame>
+                <Label Grid.Row="3"
+                       mvx:Bi.nd="Text EmailError"
+                       Style="{StaticResource welcomStyle_i14}"/>
+                <Label Grid.Row="4"
+                       mvx:Bi.nd="Text [Password]"
+                       Style="{StaticResource welcomStyle_i5}"/>
+                <Frame Grid.Row="5"
+                       Style="{StaticResource frameStyle_i1}">
+                    <customelements:CustomEntry BackgroundColor="Transparent"
+                                                Style="{StaticResource entryStyle_i1}"
+                                                IsPassword="True"
+                                                mvx:Bi.nd="CustomEntryUnfocusedProperty CheckPasswordCommand; Text Password">
+                        <customelements:CustomEntry.Triggers>
+                            <DataTrigger TargetType="customelements:CustomEntry" Binding="{Binding IsValidPassword}" Value="false">
+                                <Setter Property="TextColor" Value="#F42525"/>
+                            </DataTrigger>
+                        </customelements:CustomEntry.Triggers>
+                    </customelements:CustomEntry>
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsValidPassword}" Value="false">
+                            <Setter Property="BorderColor" Value="#FC6D6D"/>
+                        </DataTrigger>
+                    </Frame.Triggers>
+                </Frame>
+                <Label Grid.Row="6"
+                       mvx:Bi.nd="Text PasswordError"
+                       Style="{StaticResource welcomStyle_i14}"/>
+                <Label Grid.Row="7"
+                       mvx:Bi.nd="Text [ConfirmPassword]"
+                       Style="{StaticResource welcomStyle_i5}"
+                />
+                <Frame Grid.Row="8"
+                       Style="{StaticResource frameStyle_i1}">
+                    <customelements:CustomEntry BackgroundColor="Transparent"
+                                     Style="{StaticResource entryStyle_i1}"
+                                     mvx:Bi.nd="CustomEntryUnfocusedProperty CheckPasswordConfirmCommand; Text PasswordConfirm"
+                                     IsPassword="True">
+                        <customelements:CustomEntry.Triggers>
+                            <DataTrigger TargetType="customelements:CustomEntry" Binding="{Binding IsValidConfirmPassword}" Value="false">
+                                <Setter Property="TextColor" Value="#F42525"/>
+                            </DataTrigger>
+                        </customelements:CustomEntry.Triggers>
+                    </customelements:CustomEntry>
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsValidConfirmPassword}" Value="false">
+                            <Setter Property="BorderColor" Value="#FC6D6D"/>
+                        </DataTrigger>
+                    </Frame.Triggers>
+                </Frame>
+                <Label Grid.Row="9"
+                       mvx:Bi.nd="Text PasswordConfirmError"
+                       Style="{StaticResource welcomStyle_i14}"/>
+                <customelements:GradientButton Grid.Row="11" 
+                                               mvx:Bi.nd="Text [GetStarted]"
+                                               Command="{Binding SignInCommandAsync}"
+                                               Style="{StaticResource gradientButtonStyle_i1}"
+                                               IsEnabled="{Binding IsValidEmailAndPassword}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

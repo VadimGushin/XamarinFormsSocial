@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.CustomElements.Shared.ImageSvgButton"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+
+    <ContentView.Content>
+
+        <ffimageloadingsvg:SvgCachedImage x:Name="image"
+                                          DownsampleToViewSize="True"
+                                          Aspect="AspectFit">
+
+            <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+
+                <TapGestureRecognizer Tapped="OnTapped"/>
+                
+            </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+            
+        </ffimageloadingsvg:SvgCachedImage>
+
+    </ContentView.Content>
+
+</ContentView>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5k-f2-b5h">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="gAE-YM-kbH">
+            <objects>
+                <viewController id="X5k-f2-b5h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y8P-hJ-Z43"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="1" blue="1" alpha="1"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="5069" translatesAutoresizingMaskIntoConstraints="NO" image="BackgroundSplashscreen">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="5957" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="124" y="243.5" width="166" height="249"/>
+                                <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0" alpha="0"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="7024" translatesAutoresizingMaskIntoConstraints="NO" image="A_image_pdf">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="165.5"/>
+                                        <constraints>
+                                            <constraint id="8100" firstAttribute="width" secondItem="7024" secondAttribute="height"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8102" translatesAutoresizingMaskIntoConstraints="NO" image="all_me">
+                                        <rect key="frame" x="0.0" y="187.5" width="166" height="61.5"/>
+                                        <constraints>
+                                            <constraint id="8106" firstAttribute="width" secondItem="8102" secondAttribute="height" multiplier="167:62"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint id="6599" firstAttribute="width" secondItem="5957" secondAttribute="height" multiplier="240:361"/>
+                                    <constraint id="7871" firstItem="7024" firstAttribute="centerX" secondItem="5957" secondAttribute="centerX"/>
+                                    <constraint id="7872" firstItem="7024" firstAttribute="width" secondItem="5957" secondAttribute="width"/>
+                                    <constraint id="8101" firstItem="7024" firstAttribute="top" secondItem="5957" secondAttribute="top"/>
+                                    <constraint id="8103" firstItem="8102" firstAttribute="width" secondItem="5957" secondAttribute="width"/>
+                                    <constraint id="8104" firstItem="8102" firstAttribute="centerX" secondItem="5957" secondAttribute="centerX"/>
+                                    <constraint id="8105" firstAttribute="bottom" secondItem="8102" secondAttribute="bottom"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint id="5092" firstItem="5069" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX"/>
+                            <constraint id="5093" firstAttribute="centerY" secondItem="5069" secondAttribute="centerY"/>
+                            <constraint id="5094" firstItem="5069" firstAttribute="height" secondItem="yd7-JS-zBw" secondAttribute="height"/>
+                            <constraint id="5095" firstItem="5069" firstAttribute="width" secondItem="yd7-JS-zBw" secondAttribute="width"/>
+                            <constraint id="6178" firstItem="5957" firstAttribute="centerY" secondItem="5069" secondAttribute="centerY"/>
+                            <constraint id="6179" firstItem="5957" firstAttribute="centerX" secondItem="5069" secondAttribute="centerX"/>
+                            <constraint id="6180" firstItem="5957" firstAttribute="width" secondItem="5069" secondAttribute="width" multiplier="0.35"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="366"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackgroundSplashscreen" width="125" height="270.6667"/>
+        <image name="A_image_pdf" width="156" height="156"/>
+        <image name="all_me" width="134.2773" height="34.1767"/>
+    </resources>
+</document>

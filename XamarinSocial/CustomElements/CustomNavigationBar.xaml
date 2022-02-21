@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.CustomElements.CustomNavigationBar">
+    
+  <ContentView.Content>
+      
+      <StackLayout x:Name="parentLayout"
+                   Orientation="Horizontal"
+                   Margin="10">
+          
+            <ImageButton x:Name="leftButton"
+                         Style="{StaticResource ProfileTabbarImageButton}"/>
+
+            <Label x:Name="titleText"
+                   Style="{StaticResource welcomStyle_i26}"
+                   HorizontalOptions="CenterAndExpand"/>
+
+            <ImageButton x:Name="rightButton"
+                         Style="{StaticResource ProfileTabbarImageButton}"/>
+
+        </StackLayout>
+      
+  </ContentView.Content>
+    
+</ContentView>

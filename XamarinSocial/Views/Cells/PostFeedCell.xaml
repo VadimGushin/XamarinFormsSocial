@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinSocial.Views.Cells.PostFeedCell" 
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:video="clr-namespace:XamarinSocial.CustomElements.VideoPlayer"
+             xmlns:shared="clr-namespace:XamarinSocial.Views.Shared"
+             xmlns:customElementsView="clr-namespace:XamarinSocial.CustomElements"
+             xmlns:viewModels="clr-namespace:XamarinSocial.ViewModels.TabsView;assembly=XamarinSocial"
+             xmlns:effects="clr-namespace:XamarinSocial.Effects"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:converters="clr-namespace:XamarinSocial.Converters">
+    <ContentView.Resources>
+        <converters:PostToImageSourceConverter x:Key="PostToImageSourceConverter"/>
+        <converters:ImagePostToIsVisibleBoolConverter x:Key="ImagePostToIsVisibleBoolConverter"/>
+        <converters:PostToAdditionalElementsStringConverter x:Key="PostToAdditionalElementsStringConverter"/>
+        <converters:PostToIsVisibleAdditionalElementsBoolConverter x:Key="PostToIsVisibleAdditionalElementsBoolConverter"/>
+        <converters:StringIsNullOrEmptyToBoolConverslyConverter x:Key="StringIsNullOrEmptyToBoolConverslyConverter"/>
+        <converters:HaveMediaContentToIsVisibleConverter x:Key="HaveMediaContentToIsVisibleConverter"/>
+        <converters:PostToVideoSourceConverter x:Key="PostToVideoSourceConverter"/>
+    </ContentView.Resources>
+    <Grid RowSpacing="10" ColumnSpacing="0" 
+          BackgroundColor="#FFFFFF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+        
+        <!--header-->
+        <RelativeLayout Grid.Column="1" Grid.Row="0"
+                        Margin="0" 
+                        Padding="0" 
+                        HorizontalOptions="Fill" >
+
+            <shared:PostCellHeader
+                    ReportPostCommandAsync="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=ReportPostCommandAsync}"
+                    DeletePostCommandAsync="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=DeletePostCommandAsync}"
+                    EditPostCommandAsync="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=EditPostCommandAsync}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.18}"/>
+
+        </RelativeLayout>
+
+        <customElementsView:ProportionalView Grid.Column="1"
+                                             HeightToWidthPropotional="0.6"
+                                             Grid.Row="1"
+                                             IsVisible="{Binding . , Converter={StaticResource HaveMediaContentToIsVisibleConverter}, ConverterParameter=1}">
+            <!--#region image content -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Style="{StaticResource frameStyle_i3}"
+                       Grid.Row="0" Grid.RowSpan="2"
+                       Grid.Column="0" Grid.ColumnSpan="2"
+                       IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=1}"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill">
+                    <Frame.Effects>
+                        <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                    </Frame.Effects>
+                    <ffimageloading:CachedImage
+                                                IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=1}"
+                                                Aspect="AspectFill"
+                                                DownsampleToViewSize="True"
+                                                Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=1}">
+                    </ffimageloading:CachedImage>
+                </Frame>
+
+                <Frame Style="{StaticResource frameStyle_i3}"
+                       Grid.Row="0" 
+                       Grid.Column="2" 
+                       IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=1}"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill">
+                    <Frame.Effects>
+                        <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                    </Frame.Effects>
+
+                    <ffimageloading:CachedImage Aspect="AspectFill"
+                                                DownsampleToViewSize="True"
+                                                Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=2}">
+                    </ffimageloading:CachedImage>
+                </Frame>
+
+                <Frame Style="{StaticResource frameStyle_i3}"
+                    Grid.Row="1" 
+                    Grid.Column="2" 
+                    IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=1}"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
+                    <Frame.Effects>
+                        <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                    </Frame.Effects>
+
+                    <ffimageloading:CachedImage
+                    Aspect="AspectFill"
+                    DownsampleToViewSize="True"
+                    Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=3}">
+                    </ffimageloading:CachedImage>
+                </Frame>
+
+                <Frame Style="{StaticResource frameStyle_i3}"
+                   Grid.Row="0" Grid.RowSpan="2"
+                   Grid.Column="0" Grid.ColumnSpan="3"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   IsVisible="{Binding . , Converter={StaticResource ImagePostToIsVisibleBoolConverter}, ConverterParameter=4}">
+                    <Frame.Effects>
+                        <effects:FrameCornerRadiusEffect CornerRadius="{OnPlatform iOS={StaticResource radius_1}}"/>
+                    </Frame.Effects>
+
+                    <ffimageloading:CachedImage
+                    Aspect="AspectFill"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Source="{Binding . , Converter={StaticResource PostToImageSourceConverter}, ConverterParameter=4}">
+                    </ffimageloading:CachedImage>
+                </Frame>
+
+                <BoxView Grid.Column="2" Grid.Row="1" 
+                        VerticalOptions="Fill" 
+                        HorizontalOptions="Fill"
+                        Style="{StaticResource BoxViewStyle_i2}"
+                        IsVisible="{Binding . , Converter={StaticResource PostToIsVisibleAdditionalElementsBoolConverter}}"/>
+                <Label  Grid.Column="2" Grid.Row="1"
+                    Style="{StaticResource welcomStyle_i22}"
+                    IsVisible="{Binding . , Converter={StaticResource PostToIsVisibleAdditionalElementsBoolConverter}}"
+                    Text="{Binding . , Converter={StaticResource PostToAdditionalElementsStringConverter}}"/>
+
+                <ffimageloading:CachedImage Grid.Row="0" Grid.RowSpan="2"
+                                        Grid.Column="0" Grid.ColumnSpan="2"
+                                        x:Name="imagePlay"
+                                        IsVisible="false"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        DownsampleToViewSize="True"
+                                        Aspect="AspectFit"
+                                        Source="play_video.png">
+                </ffimageloading:CachedImage>
+
+                <!--<video:VideoPlayer x:Name="videoContainer"
+                                   Grid.Row="0" Grid.RowSpan="2"
+                                   Grid.Column="0" Grid.ColumnSpan="3" 
+                                   AutoPlay="False" 
+                                   Source="{Binding ., PostToVideoSourceConverter}"
+                                   IsVisible="false"
+                                   BackgroundColor="Transparent"/>-->
+                <shared:VideoCellContent  Grid.Row="0" Grid.RowSpan="2"
+                                          Grid.Column="0" Grid.ColumnSpan="3"
+                                          x:Name="videoContainer"
+                                          IsVisible="false"
+                                          BackgroundColor="Transparent"/>
+            </Grid>
+        </customElementsView:ProportionalView>
+        <Label Grid.Row="2"
+               Grid.Column="1"
+               Style="{StaticResource welcomStyle_i23}"
+               Text="{Binding Description}"
+               IsVisible="{Binding Description, Converter={StaticResource StringIsNullOrEmptyToBoolConverslyConverter}}"/>
+
+        <!--#endregion image content -->
+
+        <!--footer content-->
+        <shared:PostCellFooter Grid.Column="1" Grid.Row="3"/>
+    </Grid>
+</ContentView>
